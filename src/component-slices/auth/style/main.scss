@@ -1,0 +1,91 @@
+@import "dialog";
+.AuthIndex {
+   background-image: url("./background.png");
+  background-position-x: center;
+  background-color: white;
+  padding: 1rem 2rem;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+
+
+  .backGround {
+  }
+
+  .header-logo {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      //position: absolute;
+      top: 2rem;
+
+      &.ram {
+        right: 2rem;
+      }
+
+      &.m5 {
+        left: 2rem;
+      }
+    }
+  }
+
+  .content {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    margin-top: 30vh;
+
+    .title {
+      @include th-1;
+      font-family: 'Poppins', sans-serif;
+      color: $color-primary;
+      font-weight: 700;
+      position: relative;
+
+      &:before {
+        content: "WELCOME";
+        position: absolute;
+        top: -40px;
+        color: rgb(54 57 87 / 61%);
+        font-weight: 200;
+      }
+
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: auto;
+      grid-row-gap: 15px;
+
+      input {
+        border: 1px solid #D3D1D2;
+        border-radius: 9px;
+        height: 60px;
+        //width: 100%
+      }
+
+      button {
+        background-color: $color-primary;
+        height: 60px;
+        border-radius: 9px;
+        color: white;
+        border: none;
+        margin-top: 2rem;
+      }
+    }
+
+    .footer {
+      display: flex;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 400;
+      @include th-6;
+      margin-top: 3rem;
+      align-items: center;
+      i{
+        color: $color-primary;
+        margin: 0 3px;
+      }
+    }
+  }
+}
+

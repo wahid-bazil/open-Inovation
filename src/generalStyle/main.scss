@@ -1,0 +1,37 @@
+.SliceTitle{
+  display: flex;
+  align-items: stretch;
+  font-family: 'Poppins', sans-serif;
+  i{
+    font-size: 25px;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+
+    svg{
+      position: relative;
+      top: 1px;
+    }
+  }
+  .vl{
+    width: .5px;
+    background-color: $color-primary;
+    margin-right: .5rem;
+  }
+  span{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    @include th-5;
+  }
+}
+.main{
+  background-color:  #F5F5F5;
+  min-height: 95vh;
+/*  min-height: 95vh;
+  background-image: url("footer-image.png");
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-position-x: center;
+  background-size: contain;*/
+}

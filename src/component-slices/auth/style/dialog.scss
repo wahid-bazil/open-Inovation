@@ -1,0 +1,12 @@
+.MuiDialogContentText-root{
+  span{
+    color: $color-primary;
+    font-family: 'Poppins', sans-serif;
+  }
+}
+.MuiDialogActions-root{
+  button{
+    @include button-primary;
+    padding: .5rem;
+  }
+}

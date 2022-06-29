@@ -1,0 +1,19 @@
+
+@font-face {
+  font-family: "museo";
+  src: url("../../public/assets/fonts/Museo700-Regular.otf") format("woff2"),
+  url("../../public/assets/fonts/Museo700-Regular.otf") format("woff");
+}
+
+@font-face {
+  font-family: "museo3";
+  src: url("../../public/assets/fonts/Museo300-Regular.otf") format("woff2"),
+  url("../../public/assets/fonts/Museo300-Regular.otf") format("woff");
+}
+
+
+$font-museo700: "museo";
+$font-museo300: "museo3";
+$color-primary : rgba(207, 17, 63, 1);
+$color-secondary: rgba(126, 85, 111, 1);
+

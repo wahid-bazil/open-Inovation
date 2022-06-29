@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Hind+Siliguri:wght@300;400;500;600&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&display=swap');
+$grid-breakpoints: (
+        xxs:0,
+        xs:430px,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px,
+        xxxl: 1600px
+);
+$container-max-widths: (
+        xxs:100%,
+        xs:540px,
+        sm: 540px,
+        md: 100%,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1320px,
+        xxxl: 1500px
+);
+body {
+  margin:0;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@import "generalStyle/typographies";
+@import "generalStyle/variables";
+@import "generalStyle/mixins";
+@import "generalStyle/main";
+@import "./src/component-slices/header/style/main";
+@import "./src/component-slices/auth/style/main";
+@import "./src/component-slices/StartupList/style/main";
+@import "./src/component-slices/EvaluteStartup/style/main";
+@import "./src/component-slices/finalResult/style/main";
+@import "./src/component-slices/home/style/main";
+
+
+
+
+
+

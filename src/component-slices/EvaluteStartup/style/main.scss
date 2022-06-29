@@ -1,0 +1,31 @@
+.EvaluteStartupIndex {
+  padding: 1rem;
+  background-color: #FBFBFB;
+  & > div {
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.09);
+    background-color: white;
+    padding: 1.5rem;
+  }
+  .top-side{
+    margin-bottom: 2rem;
+    .SliceTitle{
+      margin-top: .75rem;
+      margin-bottom: .75rem;
+    }
+    .save{
+      display: flex;
+      justify-content: center;
+      margin-top: 1.5rem;
+      button{
+        @include button-primary;
+        width: 136px;
+        height: 42px;
+      }
+    }
+  }
+
+
+}
+
+@import "./slices/tableNote";
+@import "./slices/classement";
