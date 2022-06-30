@@ -7,6 +7,7 @@ import HeaderIndex from "./component-slices/header";
 import {BrowserRouter, Route, useNavigate} from "react-router-dom";
 import {Routes} from "./routes";
 
+
 function App() {
 
 
@@ -14,10 +15,7 @@ function App() {
         <div className="container main  pr-3 pl-3">
             <BrowserRouter>
                 <Routes/>
-                
-
             </BrowserRouter>
-
         </div>
     );
 }
