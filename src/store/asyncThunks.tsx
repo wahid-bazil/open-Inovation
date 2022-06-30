@@ -1,5 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import axiosInstance from "../axiosConfig";
+import {evalution} from "../type";
 
 
 export const getUser = createAsyncThunk(
@@ -40,5 +41,25 @@ export const getEvalutions = createAsyncThunk(
 
     }
 )
+
+export const postEvalutions = createAsyncThunk(
+    'postEvalutions',
+    async (paylod: evalution[]) => {
+        const url = `api/evaluations/list`
+        const response = await axiosInstance.post(url, paylod);
+        return response.data
+
+    }
+)
+export const editEvalutions = createAsyncThunk(
+    'editEvalutions',
+    async (paylod: evalution[]) => {
+        const url = `api/evaluations/list`
+        const response = await axiosInstance.put(url, paylod);
+        return response.data
+
+    }
+)
+
 
 

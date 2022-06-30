@@ -30,6 +30,10 @@ const AuthIndex = () => {
     const [userLogIn, setUserLogIn] = useState<{ username: string, password: string }>({username: "", password: ""})
 
 
+    //effect
+    useEffect(()=>{
+        localStorage.clear()
+    },[])
 
 
     //actions
@@ -46,7 +50,12 @@ const AuthIndex = () => {
         dispatch(getUser(userLogIn)).unwrap()
             .then((res) => {
                 setPending(false)
-                navigate("/evalute/evaluteProject")
+                if(res.title==="ADMIN"){
+                    navigate("/evalute/result")
+                }
+                else{
+                    navigate("/evalute")
+                }
             })
             .catch(() => {
                 setPending(false)

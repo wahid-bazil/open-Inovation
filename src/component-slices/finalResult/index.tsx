@@ -8,12 +8,12 @@ const FinalResult = () => {
     const list = [1, 2, 3, 4, 5, 6]
     const navigate = useNavigate();
 
-    //state
-    const role = useSelector((state: Istate) => state.general_Slice.userCategory)
+    //const
+    const title = localStorage.getItem("title")
 
     //effects
     useEffect(() => {
-        if (role!="admin"){
+        if (title!="ADMIN"){
             localStorage.clear();
             navigate("/auth")
         }

@@ -8,9 +8,10 @@ const HeaderIndex = () => {
     const moveTo = () => {
         navigate("/auth")
     }
-    //states
-    const userName = useSelector((state:Istate)=>state.general_Slice.username)
-    const category = useSelector((state:Istate)=>state.general_Slice.userCategory)
+    //const
+    const userName = localStorage.getItem("username")
+    const category = localStorage.getItem("title")
+
     return (
         <div className="HeaderIndex">
             <div className="top-side">
@@ -29,7 +30,7 @@ const HeaderIndex = () => {
                     <span>{userName}</span>
                 </div>
                 <div className="category">
-                <span>{category}</span>
+                    <span>{category}</span>
                 </div>
             </div>
         </div>

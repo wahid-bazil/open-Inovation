@@ -1,5 +1,5 @@
 import useQuery from "../../../hooks/useQuery";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getIndivClassement} from "../../../store/asyncThunks";
 import {Istate, useAppDispatch} from "../../../store";
 import {useNavigate} from "react-router-dom";
@@ -19,10 +19,12 @@ const Classement = () => {
 
     //const
     const userId = localStorage.getItem("userId")
+    const title = localStorage.getItem("title")
 
     //states
     const projects = useSelector((state: Istate) => state.general_Slice.projects)
     const currentEdit = useSelector((state: Istate) => state.general_Slice.currentProjecToEdit)
+
 
     //effects
     useEffect(() => {
@@ -34,9 +36,13 @@ const Classement = () => {
     }, [])
 
     //actions
-    const setCurrentEdit = (event: MouseEvent) => {
-        const id = Number(event.currentTarget.id)
-        dispatch(General_Actions.setCurrentProjectToEdit(id))
+    const setCurrentEdit = (e: any, status: boolean) => {
+        const id = Number(e.currentTarget.id)
+        dispatch(General_Actions.setCurrentProjectToEdit({id, status: status, title: e.currentTarget.title}))
+        window.scrollTo(0, 0)
+        if (step != "evalute") {
+            navigate("/evalute/evaluteProject?step=evalute")
+        }
     }
 
     const isDisabled = () => {
@@ -70,24 +76,26 @@ const Classement = () => {
                 <div className="ranking">
                     <span>Ranking</span>
                 </div>
-                <div className="action">
+                <div className={title === "ADMIN" ? "d-none" : "action"}>
                     <span>Action</span>
                 </div>
             </div>
             <div className="content">
                 {projects.map((project, index) =>
-                    <div className={project.id === currentEdit ? "projectResult active" : "projectResult"}>
+                    <div  key={project.id} id={project.id.toString()}
+                         className={project.id === currentEdit ? "projectResult active" : "projectResult"}>
                         <div className="projectName">
                             <span>{project.label}</span>
                         </div>
                         <div className="note">
-                            <span>{project.score}</span>
+                            <span>{project.score} %</span>
                         </div>
                         <div className="ranking">
                             <span>{index + 1}</span>
                         </div>
-                        <div className="action">
-                            <button onClick={setCurrentEdit} id={project.id.toString()}
+                        <div className={title === "ADMIN" ? "d-none" : "action"}>
+                            <button title={project.label} onClick={(e) => setCurrentEdit(e, project.scored)}
+                                    id={project.id.toString()}
                                     className={project.scored ? "evaluted" : ""}>
                                 <span>{project.scored ? "Edit" : "Evalute"}</span>
                             </button>

@@ -2,7 +2,13 @@ import {Checkbox} from "@mui/material";
 import {useSelector} from "react-redux";
 import {Istate, useAppDispatch} from "../../../store";
 import {useEffect, useState} from "react";
-import {getCriteria, getEvalutions} from "../../../store/asyncThunks";
+import {
+    editEvalutions,
+    getCriteria,
+    getEvalutions,
+    getIndivClassement,
+    postEvalutions
+} from "../../../store/asyncThunks";
 import {useNavigate} from "react-router-dom";
 import {evalution} from "../../../type";
 import {MouseEvent} from "react";
@@ -19,6 +25,7 @@ const TableNote = () => {
     //states
     const [evalutions, setEvalutions] = useState<evalution[]>([])
     const currentProjecToEdit = useSelector((state: Istate) => state.general_Slice.currentProjecToEdit)
+    const isCurrentProjectEvaluted = useSelector((state: Istate) => state.general_Slice.isCurrentProjectEvaluted)
 
     //effects
     useEffect(() => {
@@ -45,8 +52,19 @@ const TableNote = () => {
         // @ts-ignore
         evalutionCopy.find(element => element.criteria.label === event.currentTarget.name).note = Number(event.currentTarget.value)
         setEvalutions(evalutionCopy)
-
-
+    }
+    const save = () => {
+        if (isCurrentProjectEvaluted) {
+            dispatch(editEvalutions(evalutions)).unwrap()
+                .then(() => {
+                    dispatch(getIndivClassement(Number(userId))).unwrap()
+                })
+        } else {
+            dispatch(postEvalutions(evalutions)).unwrap()
+                .then(() => {
+                    dispatch(getIndivClassement(Number(userId))).unwrap()
+                })
+        }
     }
 
     //function
@@ -68,7 +86,7 @@ const TableNote = () => {
 
 
     return (
-        <div className="TableNote">
+        <div id={"table"} className="TableNote">
             <div className="titles">
                 <div className="criteria">
                     <span>
@@ -102,7 +120,7 @@ const TableNote = () => {
                 </div>
             </div>
             {evalutions.map((evalution, index) => (
-                <div className={(index + 1 % 2 === 0 ? "value " : "value color-flow")}>
+                <div key={evalution.id} className={(index + 1 % 2 === 0 ? "value " : "value color-flow")}>
                     <div className="criteria-label">
                         <span>{evalution.criteria.label}</span>
                     </div>
@@ -130,7 +148,7 @@ const TableNote = () => {
                 </div>
             ))}
             <div className="save">
-                <button className={isDisabled()}>
+                <button onClick={save} className={isDisabled()}>
                             <span>
                                 Save
                             </span>

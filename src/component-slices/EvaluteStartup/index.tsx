@@ -5,7 +5,7 @@ import SliceTitle from "../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
 import {Istate} from "../../store";
 import useQuery from "../../hooks/useQuery";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -24,6 +24,10 @@ const EvaluteStartupIndex = () => {
     const role = useSelector((state: Istate) => state.general_Slice.userCategory)
     const getEvalutionsPending = useSelector((state: Istate) => state.general_Slice.getEvalutionsPending)
     const getIndivClassementPending = useSelector((state: Istate) => state.general_Slice.getIndivClassementPending)
+    const isEvalutionsSaving = useSelector((state: Istate) => state.general_Slice.isEvalutionsSaving)
+    const currentProjectTiltle = useSelector((state: Istate) => state.general_Slice.currentProjectTitle)
+    const projects = useSelector((state: Istate) => state.general_Slice.projects)
+
 
     //effects
     useEffect(() => {
@@ -31,12 +35,13 @@ const EvaluteStartupIndex = () => {
             localStorage.clear();
             navigate("/auth")
         }
+        window.scrollTo(0, 0)
     }, [role])
 
     return (
         <div className="EvaluteStartupIndex">
             <Dialog
-                open={getEvalutionsPending || getIndivClassementPending}
+                open={getEvalutionsPending || getIndivClassementPending || isEvalutionsSaving}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
@@ -46,12 +51,12 @@ const EvaluteStartupIndex = () => {
             </Dialog>
             {step === "evalute" ?
                 <div className="top-side">
-                    <SliceTitle title={"Selfdrvn Enterprise"}/>
-                    <TableNote/>
+                    <SliceTitle title={currentProjectTiltle}/>
+                    <TableNote />
                 </div>
                 : null}
             <div className="bottom-side">
-                <Classement/>
+                <Classement />
             </div>
         </div>
     )
