@@ -15,7 +15,7 @@ const FinalResult = () => {
     useEffect(() => {
         if (title!="ADMIN"){
             localStorage.clear();
-            navigate("/auth")
+            navigate("/")
         }
         else{
 

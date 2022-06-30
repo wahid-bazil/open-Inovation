@@ -31,7 +31,7 @@ const Classement = () => {
         if (true) {
             dispatch(getIndivClassement(Number(userId))).unwrap()
         } else {
-            navigate("/auth")
+            navigate("/")
         }
     }, [])
 

@@ -33,7 +33,7 @@ const EvaluteStartupIndex = () => {
     useEffect(() => {
         if (role === "admin") {
             localStorage.clear();
-            navigate("/auth")
+            navigate("/")
         }
         window.scrollTo(0, 0)
     }, [role])

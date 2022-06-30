@@ -9,7 +9,7 @@ const Layout = () => {
 
     useEffect(() => {
         if (!localStorage.getItem("userId") || !localStorage.getItem("title") || !localStorage.getItem("username")) {
-            navigate("/auth")
+            navigate("/")
         }
         /*  localStorage.setItem('userId', action.payload.id.toString());
       localStorage.setItem('title', action.payload.title.toString());

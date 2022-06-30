@@ -42,7 +42,7 @@ const TableNote = () => {
                     })
             }
         } else {
-            navigate("/auth")
+            navigate("/")
         }
 
     }, [currentProjecToEdit])
