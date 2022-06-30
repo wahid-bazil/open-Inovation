@@ -13,7 +13,7 @@ function App() {
 
     return (
         <div className="container main  pr-3 pl-3">
-            <BrowserRouter>
+            <BrowserRouter basename={"/opinotation"}>
                 <Routes/>
             </BrowserRouter>
         </div>
