@@ -1,9 +1,10 @@
 import axios, {AxiosStatic} from 'axios';
 
 
-const baseURL = 'https://31d9-105-157-254-106.eu.ngrok.io';
+const baseURL = 'http://pntt.test.app.royalairmaroc.com/';
 
 const axiosInstance = axios.create({
+
     baseURL: baseURL,
     //timeout: 10000,
     headers: {
