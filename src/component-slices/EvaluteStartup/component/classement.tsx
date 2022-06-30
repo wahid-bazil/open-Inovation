@@ -39,6 +39,22 @@ const Classement = () => {
         dispatch(General_Actions.setCurrentProjectToEdit(id))
     }
 
+    const isDisabled = () => {
+        let index = 0
+        while (index < projects.length) {
+            if (!projects[index].scored) {
+                break;
+            } else {
+                index++
+            }
+        }
+        if (index === projects.length) {
+            return ""
+        } else {
+            return "disabled"
+        }
+    }
+
 
     return (
         <div className="Classement">
@@ -72,7 +88,7 @@ const Classement = () => {
                         </div>
                         <div className="action">
                             <button onClick={setCurrentEdit} id={project.id.toString()}
-                                    className={project.scored  ? "evaluted" : ""}>
+                                    className={project.scored ? "evaluted" : ""}>
                                 <span>{project.scored ? "Edit" : "Evalute"}</span>
                             </button>
                         </div>
@@ -80,7 +96,7 @@ const Classement = () => {
                     </div>
                 )}
                 {step === "evalute" ? <div className="submit">
-                    <button>
+                    <button className={isDisabled()}>
                         <span>
                             Submission
                         </span>

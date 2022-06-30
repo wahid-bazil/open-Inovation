@@ -48,13 +48,6 @@ const EvaluteStartupIndex = () => {
                 <div className="top-side">
                     <SliceTitle title={"Selfdrvn Enterprise"}/>
                     <TableNote/>
-                    <div className="save">
-                        <button>
-                            <span>
-                                Save
-                            </span>
-                        </button>
-                    </div>
                 </div>
                 : null}
             <div className="bottom-side">

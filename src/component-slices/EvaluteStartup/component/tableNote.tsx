@@ -49,6 +49,23 @@ const TableNote = () => {
 
     }
 
+    //function
+    const isDisabled = () => {
+        let index = 0
+        while (index < evalutions.length) {
+            if (evalutions[index].note === null) {
+                break;
+            } else {
+                index++
+            }
+        }
+        if (index === evalutions.length) {
+            return ""
+        } else {
+            return "disabled"
+        }
+    }
+
 
     return (
         <div className="TableNote">
@@ -112,6 +129,13 @@ const TableNote = () => {
                     </div>
                 </div>
             ))}
+            <div className="save">
+                <button className={isDisabled()}>
+                            <span>
+                                Save
+                            </span>
+                </button>
+            </div>
         </div>
     )
 }
