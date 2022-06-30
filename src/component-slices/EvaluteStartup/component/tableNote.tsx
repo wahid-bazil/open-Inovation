@@ -13,6 +13,7 @@ import {useNavigate} from "react-router-dom";
 import {evalution} from "../../../type";
 import {MouseEvent} from "react";
 
+
 let isInitial = true
 const TableNote = () => {
 
@@ -120,7 +121,7 @@ const TableNote = () => {
                 </div>
             </div>
             {evalutions.map((evalution, index) => (
-                <div key={evalution.id} className={(index + 1 % 2 === 0 ? "value " : "value color-flow")}>
+                <div  className={(index + 1 % 2 === 0 ? "value " : "value color-flow")}>
                     <div className="criteria-label">
                         <span>{evalution.criteria.label}</span>
                     </div>

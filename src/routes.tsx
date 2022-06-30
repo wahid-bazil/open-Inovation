@@ -6,7 +6,7 @@ import {EvaluteRoutes} from "./component-slices/routes";
 export function Routes() {
     return useRoutes([
         {
-            path: 'auth',
+            path: '',
             element: <AuthIndex />,
         },
         {
@@ -14,6 +14,5 @@ export function Routes() {
             element: <Layout />,
             children: EvaluteRoutes,
         },
-
     ]);
 }

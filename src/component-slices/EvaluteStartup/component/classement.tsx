@@ -82,7 +82,7 @@ const Classement = () => {
             </div>
             <div className="content">
                 {projects.map((project, index) =>
-                    <div  key={project.id} id={project.id.toString()}
+                    <div id={project.id.toString()}
                          className={project.id === currentEdit ? "projectResult active" : "projectResult"}>
                         <div className="projectName">
                             <span>{project.label}</span>
@@ -91,7 +91,7 @@ const Classement = () => {
                             <span>{project.score} %</span>
                         </div>
                         <div className="ranking">
-                            <span>{index + 1}</span>
+                            <span>{project.scored ? index + 1 : "-"}</span>
                         </div>
                         <div className={title === "ADMIN" ? "d-none" : "action"}>
                             <button title={project.label} onClick={(e) => setCurrentEdit(e, project.scored)}
