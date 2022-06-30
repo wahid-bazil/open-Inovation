@@ -1,7 +1,7 @@
 import axios, {AxiosStatic} from 'axios';
 
 
-const baseURL = 'http://pntt.test.app.royalairmaroc.com:8089/';
+const baseURL = 'http://pntt.test.app.royalairmaroc.com/';
 
 const axiosInstance = axios.create({
 
