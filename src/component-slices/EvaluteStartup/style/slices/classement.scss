@@ -25,12 +25,16 @@
     padding: .5rem;
     margin: 0 .25rem;
     background-color: #E6E0E4;
+
     .projectResult {
       background: #FBFBFB;
-      border: 1px solid #7E556F;
       box-shadow: rgb(0 0 0 / 16%) 0px 1px 2px;
       margin-bottom: .5rem;
       display: flex;
+
+      &.active {
+        border: 1px solid #7E556F;
+      }
 
       & > div {
         width: 25%;
@@ -58,18 +62,21 @@
           position: relative;
           left: .5rem;
           background-color: $color-secondary;
-          &.evaluted{
-            background-color:rgba(247, 179, 142, 1);
+
+          &.evaluted {
+            background-color: rgba(247, 179, 142, 1);
           }
 
         }
       }
     }
+
     .submit {
       display: flex;
       justify-content: center;
       margin-top: 2rem;
       margin-bottom: 2rem;
+
       button {
         @include button-primary;
         width: 136px;

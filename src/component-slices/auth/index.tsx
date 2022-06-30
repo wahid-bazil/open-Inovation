@@ -29,11 +29,10 @@ const AuthIndex = () => {
     const [isFailed, setFailed] = useState<boolean>(false)
     const [userLogIn, setUserLogIn] = useState<{ username: string, password: string }>({username: "", password: ""})
 
-    //effects
+
 
 
     //actions
-
     const handlChange = (event: FormEvent<HTMLInputElement>) => {
         setUserLogIn({
             ...userLogIn,

@@ -107,7 +107,7 @@ const TableNote = () => {
                     </div>
                     <div className="weight-value">
                    <span>
-                        {evalution.criteria.weight}
+                        {evalution.criteria.weight}%
                     </span>
                     </div>
                 </div>

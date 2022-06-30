@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, current, PayloadAction} from '@reduxjs/toolkit';
-import {getIndivClassement, getUser} from "./asyncThunks";
+import {getEvalutions, getIndivClassement, getUser} from "./asyncThunks";
 
 
 export interface Interface_General_State {
@@ -8,8 +8,12 @@ export interface Interface_General_State {
     username: string,
     userCategory: string,
 
-    projects: { id: number, label: string, score: number ,scored:boolean }[],
+    projects: { id: number, label: string, score: number, scored: boolean }[],
     currentProjecToEdit: number | null,
+
+    //loadingState
+    getEvalutionsPending: boolean,
+    getIndivClassementPending: boolean
 }
 
 const General_State: Interface_General_State = {
@@ -21,6 +25,10 @@ const General_State: Interface_General_State = {
     projects: [],
     currentProjecToEdit: null,
 
+    //loadingState
+    getEvalutionsPending: true,
+    getIndivClassementPending: true
+
 
 };
 
@@ -31,7 +39,7 @@ const General_Slice = createSlice({
     reducers: {
         //loadingstate
         setCurrentProjectToEdit(state, action: PayloadAction<number>) {
-            console.log(action.payload ,"edd")
+            console.log(action.payload, "edd")
             state.currentProjecToEdit = action.payload
         }
     },
@@ -46,9 +54,21 @@ const General_Slice = createSlice({
             })
 
             //getIndivClassement
+            .addCase(getIndivClassement.pending, (state, action) => {
+                state.getIndivClassementPending = true
+            })
             .addCase(getIndivClassement.fulfilled, (state, action) => {
                 state.projects = action.payload
                 state.currentProjecToEdit = action.payload[0].id
+                state.getIndivClassementPending = false
+            })
+
+            //getEvalutions
+            .addCase(getEvalutions.pending, (state, action) => {
+                state.getEvalutionsPending = true
+            })
+            .addCase(getEvalutions.fulfilled, (state, action) => {
+                state.getEvalutionsPending = false
             })
 
     },

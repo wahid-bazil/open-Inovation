@@ -7,6 +7,11 @@ import {Istate} from "../../store";
 import useQuery from "../../hooks/useQuery";
 import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import CircularProgress from "@mui/material/CircularProgress";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
 
 const EvaluteStartupIndex = () => {
 
@@ -17,6 +22,8 @@ const EvaluteStartupIndex = () => {
 
     //state
     const role = useSelector((state: Istate) => state.general_Slice.userCategory)
+    const getEvalutionsPending = useSelector((state: Istate) => state.general_Slice.getEvalutionsPending)
+    const getIndivClassementPending = useSelector((state: Istate) => state.general_Slice.getIndivClassementPending)
 
     //effects
     useEffect(() => {
@@ -28,6 +35,15 @@ const EvaluteStartupIndex = () => {
 
     return (
         <div className="EvaluteStartupIndex">
+            <Dialog
+                open={getEvalutionsPending || getIndivClassementPending}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogContent>
+                    <CircularProgress style={{color: "#CF113F"}}/>
+                </DialogContent>
+            </Dialog>
             {step === "evalute" ?
                 <div className="top-side">
                     <SliceTitle title={"Selfdrvn Enterprise"}/>

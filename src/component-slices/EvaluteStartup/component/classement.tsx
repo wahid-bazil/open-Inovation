@@ -22,6 +22,7 @@ const Classement = () => {
 
     //states
     const projects = useSelector((state: Istate) => state.general_Slice.projects)
+    const currentEdit = useSelector((state: Istate) => state.general_Slice.currentProjecToEdit)
 
     //effects
     useEffect(() => {
@@ -59,7 +60,7 @@ const Classement = () => {
             </div>
             <div className="content">
                 {projects.map((project, index) =>
-                    <div className="projectResult">
+                    <div className={project.id === currentEdit ? "projectResult active" : "projectResult"}>
                         <div className="projectName">
                             <span>{project.label}</span>
                         </div>
@@ -71,8 +72,8 @@ const Classement = () => {
                         </div>
                         <div className="action">
                             <button onClick={setCurrentEdit} id={project.id.toString()}
-                                    className={project.score === 0 ? "" : "evaluted"}>
-                                <span>{project.scored ? "Evalute" : "Edit"}</span>
+                                    className={project.scored  ? "evaluted" : ""}>
+                                <span>{project.scored ? "Edit" : "Evalute"}</span>
                             </button>
                         </div>
 
