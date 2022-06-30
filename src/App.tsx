@@ -4,16 +4,20 @@ import AuthIndex from "./component-slices/auth";
 import StartupListIndex from "./component-slices/StartupList";
 import EvaluteStartupIndex from "./component-slices/EvaluteStartup";
 import HeaderIndex from "./component-slices/header";
-import {BrowserRouter, Route, useNavigate} from "react-router-dom";
-import {Routes} from "./routes";
+import {BrowserRouter, Route, useNavigate,Routes} from "react-router-dom";
+
 
 function App() {
 
 
     return (
         <div className="container main  pr-3 pl-3">
+
             <BrowserRouter>
-                <Routes/>
+                <Routes>
+                    <Route path={"/auth"} element={<AuthIndex/>}/>
+                </Routes>
+                {/* <Routes/>*/}
             </BrowserRouter>
 
         </div>
