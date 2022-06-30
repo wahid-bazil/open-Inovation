@@ -1,5 +1,44 @@
+import useQuery from "../../../hooks/useQuery";
+import {useEffect, useState} from "react";
+import {getIndivClassement} from "../../../store/asyncThunks";
+import {Istate, useAppDispatch} from "../../../store";
+import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {General_Actions} from "../../../store/generalSlice";
+import {MouseEvent} from "react"
+
 const Classement = () => {
-    const list = [1, 2, 3, 4,5,6]
+
+
+    const dispatch = useAppDispatch()
+
+    const navigate = useNavigate()
+
+    let query = useQuery();
+    const step = query.get('step')
+
+    //const
+    const userId = localStorage.getItem("userId")
+
+    //states
+    const projects = useSelector((state: Istate) => state.general_Slice.projects)
+
+    //effects
+    useEffect(() => {
+        if (true) {
+            dispatch(getIndivClassement(Number(userId))).unwrap()
+        } else {
+            navigate("/auth")
+        }
+    }, [])
+
+    //actions
+    const setCurrentEdit = (event: MouseEvent) => {
+        const id = Number(event.currentTarget.id)
+        dispatch(General_Actions.setCurrentProjectToEdit(id))
+    }
+
+
     return (
         <div className="Classement">
             <div className="titles">
@@ -19,32 +58,33 @@ const Classement = () => {
                 </div>
             </div>
             <div className="content">
-                {list.map((value, index) =>
+                {projects.map((project, index) =>
                     <div className="projectResult">
                         <div className="projectName">
-                           <span>Selfdrvn Enterprise</span>
+                            <span>{project.label}</span>
                         </div>
                         <div className="note">
-                           <span>8/10</span>
+                            <span>{project.score}</span>
                         </div>
                         <div className="ranking">
-                            <span>3</span>
+                            <span>{index + 1}</span>
                         </div>
                         <div className="action">
-                            <button>
-                                <span>Evaluate</span>
+                            <button onClick={setCurrentEdit} id={project.id.toString()}
+                                    className={project.score === 0 ? "" : "evaluted"}>
+                                <span>{project.scored ? "Evalute" : "Edit"}</span>
                             </button>
                         </div>
 
                     </div>
                 )}
-                <div className="submit">
+                {step === "evalute" ? <div className="submit">
                     <button>
                         <span>
                             Submission
                         </span>
                     </button>
-                </div>
+                </div> : null}
             </div>
         </div>
     )

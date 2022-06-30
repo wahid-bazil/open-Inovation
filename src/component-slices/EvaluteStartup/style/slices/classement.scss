@@ -43,10 +43,10 @@
         span {
           @include th-6;
           font-family: 'Poppins', sans-serif;
+          text-align: center;
         }
 
         button {
-          background-color: $color-secondary;
           color: white;
           border-radius: 6px;
           border: none;
@@ -57,6 +57,11 @@
           width: 60%;
           position: relative;
           left: .5rem;
+          background-color: $color-secondary;
+          &.evaluted{
+            background-color:rgba(247, 179, 142, 1);
+          }
+
         }
       }
     }

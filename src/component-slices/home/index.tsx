@@ -14,12 +14,12 @@ const HomeIndex = () => {
                 <br/>or see your Overall
             </div>
             <div className="actions">
-                <button onClick={()=>MoveTo("")} className="evalute">
+                <button onClick={()=>MoveTo("/evalute/evaluteProject")} className="evalute">
                     <span>
                         Overall summary
                     </span>
                 </button>
-                <button  onClick={()=>MoveTo("/evalute/evaluteProject")} className="summary">
+                <button  onClick={()=>MoveTo("/evalute/evaluteProject?step=evalute")} className="summary">
                     <span>
                        Evaluate
                     </span>

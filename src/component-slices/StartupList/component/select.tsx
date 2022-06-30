@@ -4,33 +4,12 @@ import Select, {SelectChangeEvent} from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import {useState} from "react";
 import {FaChevronDown} from "react-icons/fa"
-import {createTheme} from "@mui/material";
-
-const defaultColor = "#ff0000";
-const hoverColor = "#0000ff";
-const focusColor = "#00ff00";
 
 
-const theme :any = createTheme({
-    overrides: {
-        MuiOutlinedInput: {
-            root: {
-                // Hover state
-                "&:hover $notchedOutline": {
-                    borderColor: hoverColor
-                },
-                // Focused state
-                "&$focused $notchedOutline": {
-                    borderColor: focusColor
-                }
-            },
-            // Default State
-            notchedOutline: {
-                borderColor: defaultColor
-            }
-        }
-    }
-});
+
+
+
+
 
 const SelectS = () => {
 
