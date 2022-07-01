@@ -15,8 +15,8 @@ const FinalResult = () => {
     //effects
     useEffect(() => {
         if (title != "ADMIN") {
-            localStorage.clear();
-            navigate("/login")
+            //localStorage.clear();
+            //navigate("/login")
         } else {
 
         }
