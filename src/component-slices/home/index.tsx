@@ -6,7 +6,7 @@ import {Istate} from "../../store";
 const HomeIndex = () => {
     const navigate = useNavigate();
 
-    const  isSubmitDone =localStorage.getItem("submit")
+    const isSubmitDone = localStorage.getItem("submit")
 
 
     //actios
@@ -27,7 +27,7 @@ const HomeIndex = () => {
                         Summary
                     </span>
                     </button>
-                    {isSubmitDone==="done" ? null
+                    {isSubmitDone === "done" ? null
                         :
                         <button onClick={() => MoveTo("/evalute/evaluteProject?step=evalute")} className="summary">
                     <span>
@@ -35,7 +35,6 @@ const HomeIndex = () => {
                     </span>
                         </button>
                     }
-
                 </div>
             </div>
         </Layout>
