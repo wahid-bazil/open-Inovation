@@ -81,7 +81,7 @@ const Classement = () => {
             })
     }
     const getClasse = (project: any) => {
-        if (isDone) {
+        if (isDone==="done") {
             return "invisible"
         } else {
             if (project.scored) {
@@ -141,7 +141,7 @@ const Classement = () => {
                             <span>{project.scored ? index + 1 : "-"}</span>
                         </div>
                         <div className={title === "ADMIN" ? "d-none" : "action"}>
-                            {isDone ?
+                            {isDone==="done" ?
                                 <Checkbox checked={true}/>
                                 : <button title={project.label} onClick={(e) => setCurrentEdit(e, project.scored)}
                                           id={project.id.toString()}

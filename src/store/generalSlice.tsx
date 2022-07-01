@@ -120,7 +120,6 @@ const General_Slice = createSlice({
                     state.currentProjectTitle = action.payload[0].label
                     console.log(action.payload[0].scored ,action.payload[0].scored)
                     state.isCurrentProjectEvaluted= action.payload[0].scored
-                   
                 }
                 state.getIndivClassementPending = false
             })
