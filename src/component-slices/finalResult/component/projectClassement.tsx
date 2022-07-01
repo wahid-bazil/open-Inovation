@@ -1,7 +1,20 @@
 import SliceTitle from "../../generalComponent/sliceTitle";
+import {useSelector} from "react-redux";
+import {useEffect} from "react";
+import {useAppDispatch} from "../../../store";
+import {getFinalResult} from "../../../store/asyncThunks";
 
 const ProjectClassement = () => {
     const list = [1, 2, 3, 4, 5, 6]
+    const dispatch = useAppDispatch()
+
+    const finalClassemet = useSelector((state: Istate) => state.general_Slice.finalClassemet)
+
+    //effects
+    useEffect(() => {
+        dispatch(getFinalResult())
+    }, [])
+
     return (
         <div className="ProjectClassement">
             <div>
@@ -21,21 +34,21 @@ const ProjectClassement = () => {
                         </div>
                     </div>
                     <div className="content">
-                        {list.map((value, index) =>
+                        {finalClassemet.map((project, index) =>
                                 <div className="projectResult">
                                     <div className="projectName">
                         <span>
-                            Selfdrvn Enterprise
+                           {project.label}
                         </span>
                                     </div>
                                     <div className="finalScore">
                        <span>
-                            8/10
+                             {project.score} %
                        </span>
                                     </div>
                                     <div className="ranking">
                         <span>
-                            1
+                            {index + 1}
                         </span>
                                     </div>
                                 </div>

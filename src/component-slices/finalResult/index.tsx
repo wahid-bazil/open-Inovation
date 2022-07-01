@@ -1,11 +1,11 @@
 import SliceTitle from "../generalComponent/sliceTitle";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {useSelector} from "react-redux";
 import {Istate} from "../../store";
 import {useNavigate} from "react-router-dom";
-import Layout from "../generalComponent/layout";
-import JuryClassement from "./component/juryClassement";
-import ProjectClassement from "./component/projectClassement";
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const FinalResult = () => {
     const list = [1, 2, 3, 4, 5, 6]
@@ -14,24 +14,68 @@ const FinalResult = () => {
     //const
     const title = localStorage.getItem("title")
 
+    const finalClassement = useSelector((state: Istate) => state.general_Slice.finalClassemet)
+
     //effects
     useEffect(() => {
         if (title != "ADMIN") {
             localStorage.clear();
-            navigate("/login")
+            navigate("/auth")
+        } else {
+
         }
     }, [])
     return (
-        <Layout>
-            <div className="FinalResult">
-                <div className="top-side">
-                    <ProjectClassement/>
-                </div>
-                <div className="bottom-siide">
-                    <JuryClassement/>
+        <div className="FinalResult">
+            <Dialog
+                open={getEvalutionsPending || getIndivClassementPending || isEvalutionsSaving}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogContent>
+                    <CircularProgress style={{color: "#CF113F"}}/>
+                </DialogContent>
+            </Dialog>
+            <div>
+                <SliceTitle title={"Overall summary"}/>
+                <div className="table">
+                    <div className="titles">
+                        <div/>
+                        <div>
+                            <span>
+                                Final score
+                            </span>
+                        </div>
+                        <div>
+                            <span>
+                                Ranking
+                            </span>
+                        </div>
+                    </div>
+                    <div className="content">
+                        {finalClassement.map((project, index) =>
+                                <div className="projectResult">
+                                    <div className="projectName">
+                        <span>
+                            {project.label}
+                        </span>
+                                    </div>
+                                    <div className="finalScore">
+                       <span>
+                           {parseFloat(project.score.toString()).toFixed(2)} %
+                       </span>
+                                    </div>
+                                    <div className="ranking">
+                        <span>
+                            {index + 1}
+                        </span>
+                                    </div>
+                                </div>
+                        )}
+                    </div>
                 </div>
             </div>
-        </Layout>
+        </div>
     )
 }
 export default FinalResult

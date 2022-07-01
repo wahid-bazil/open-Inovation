@@ -1,5 +1,12 @@
 import {createAsyncThunk, createSlice, current, PayloadAction} from '@reduxjs/toolkit';
-import {editEvalutions, getEvalutions, getIndivClassement, getUser, postEvalutions} from "./asyncThunks";
+import {
+    editEvalutions,
+    getEvalutions,
+    getFinalResult,
+    getIndivClassement,
+    getUser,
+    postEvalutions
+} from "./asyncThunks";
 
 
 export interface Interface_General_State {
@@ -7,15 +14,17 @@ export interface Interface_General_State {
     userId: string,
     username: string,
     userCategory: string,
-    firstname   :string,
-    lastname:string,
-    titleValue:string,
-    prefix:string,
+    firstname: string,
+    lastname: string,
+    titleValue: string,
+    prefix: string,
 
     projects: { id: number, label: string, score: number, scored: boolean }[],
     currentProjecToEdit: number | null,
     currentProjectTitle: string,
-    isCurrentProjectEvaluted: boolean
+    isCurrentProjectEvaluted: boolean,
+
+    finalClassemet: { id: number, label: string, score: number, scored: boolean }[]
 
     //loadingState
     getEvalutionsPending: boolean,
@@ -27,10 +36,10 @@ const General_State: Interface_General_State = {
     isAuthenticated: false,
     userId: "",
     username: "",
-    firstname   :"",
-    lastname:"",
-    titleValue:"",
-    prefix:"",
+    firstname: "",
+    lastname: "",
+    titleValue: "",
+    prefix: "",
     userCategory: "",
 
 
@@ -39,11 +48,14 @@ const General_State: Interface_General_State = {
     currentProjectTitle: "",
     isCurrentProjectEvaluted: false,
 
+    finalClassemet: [],
+
 
     //loadingState
     getEvalutionsPending: false,
     getIndivClassementPending: false,
     isEvalutionsSaving: false,
+    getFinalResultPending: false
 
 
 };
@@ -53,7 +65,7 @@ const General_Slice = createSlice({
     name: 'General_Slice',
     initialState: General_State,
     reducers: {
-        setCurrentProjectToEdit(state, action: PayloadAction<{ id: number, status: boolean ,title:string }>) {
+        setCurrentProjectToEdit(state, action: PayloadAction<{ id: number, status: boolean, title: string }>) {
             state.isCurrentProjectEvaluted = action.payload.status
             state.currentProjecToEdit = action.payload.id
             state.currentProjectTitle = action.payload.title
@@ -67,7 +79,7 @@ const General_Slice = createSlice({
 
             //getUser
             .addCase(getUser.fulfilled, (state, action) => {
-                console.log(action.payload ,"as")
+                console.log(action.payload, "as")
                 state.username = action.payload.username
                 state.userCategory = action.payload.title
                 state.userId = action.payload.id
@@ -93,10 +105,9 @@ const General_Slice = createSlice({
                 if (state.currentProjecToEdit === null) {
                     state.currentProjecToEdit = action.payload[0].id
                     state.currentProjectTitle = action.payload[0].label
-                    if (action.payload[0].scored){
+                    if (action.payload[0].scored) {
                         state.isCurrentProjectEvaluted = true
-                    }
-                    else{
+                    } else {
                         state.isCurrentProjectEvaluted = false
                     }
                 }
@@ -125,6 +136,15 @@ const General_Slice = createSlice({
             })
             .addCase(postEvalutions.fulfilled, (state, action) => {
                 state.isEvalutionsSaving = false
+            })
+
+            //getFinalResult
+            .addCase(getFinalResult.pending, (state, action) => {
+                state.getFinalResultPending = true
+            })
+            .addCase(getFinalResult.fulfilled, (state, action) => {
+                state.finalClassemet = actions.payload
+                state.getFinalResultPending = false
             })
 
     },
