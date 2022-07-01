@@ -82,7 +82,11 @@ const General_Slice = createSlice({
         },
         setIsSubmit(state, action) {
             state.isSubmitDone = action.payload
+        },
+        reseTeCurrentEdit(state) {
+            state.currentProjecToEdit = null
         }
+
     },
     extraReducers: (builder) => {
         builder
@@ -118,8 +122,7 @@ const General_Slice = createSlice({
                 if (state.currentProjecToEdit === null) {
                     state.currentProjecToEdit = action.payload[0].id
                     state.currentProjectTitle = action.payload[0].label
-                    console.log(action.payload[0].scored ,action.payload[0].scored)
-                    state.isCurrentProjectEvaluted= action.payload[0].scored
+                    state.isCurrentProjectEvaluted = action.payload[0].scored
                 }
                 state.getIndivClassementPending = false
             })

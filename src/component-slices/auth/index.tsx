@@ -10,6 +10,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import CircularProgress from '@mui/material/CircularProgress';
+import {General_Actions} from "../../store/generalSlice";
 
 const AuthIndex = () => {
 
@@ -31,9 +32,10 @@ const AuthIndex = () => {
 
 
     //effect
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.clear()
-    },[])
+        dispatch(General_Actions.reseTeCurrentEdit())
+    }, [])
 
 
     //actions
@@ -44,19 +46,17 @@ const AuthIndex = () => {
         })
     }
 
-    const logIn = (event:any) => {
+    const logIn = (event: any) => {
         event.preventDefault();
         setPending(true)
         dispatch(getUser(userLogIn)).unwrap()
             .then((res) => {
                 setPending(false)
-                if(res.title==="ADMIN"){
+                if (res.title === "ADMIN") {
                     navigate("/evalute/result")
-                }
-                else if (res.finalSubmission){
+                } else if (res.finalSubmission) {
                     navigate("/evalute/evaluteProject")
-                }
-                else{
+                } else {
                     navigate("/evalute")
                 }
             })
@@ -109,7 +109,8 @@ const AuthIndex = () => {
                     RAM open innovation
                 </div>
                 <form>
-                    <input name={"username"} onChange={handlChange} value={userLogIn.username} placeholder={"Username"}/>
+                    <input name={"username"} onChange={handlChange} value={userLogIn.username}
+                           placeholder={"Username"}/>
                     <input type={"password"} name={"password"} onChange={handlChange} value={userLogIn.password}
                            placeholder={"Password"}/>
 
