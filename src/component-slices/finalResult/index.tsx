@@ -19,67 +19,18 @@ const FinalResult = () => {
     //const
     const title = localStorage.getItem("title")
 
-    const getFinalResultPending = useSelector((state: Istate) => state.general_Slice.getFinalResultPending)
+
+
 
     //effects
     useEffect(() => {
         if (title != "ADMIN") {
             localStorage.clear();
             navigate("/")
-        } else {
-            dispatch(getFinalResult()).unwrap()
         }
     }, [])
     return (
         <div className="FinalResult">
-            {/*           <Dialog
-                open={getFinalResultPending}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogContent>
-                    <CircularProgress style={{color: "#CF113F"}}/>
-                </DialogContent>
-            </Dialog>*/}
-            {/*    <div>
-                <SliceTitle title={"Overall summary"}/>
-                <div className="table">
-                    <div className="titles">
-                        <div/>
-                        <div>
-                            <span>
-                                Final score
-                            </span>
-                        </div>
-                        <div>
-                            <span>
-                                Ranking
-                            </span>
-                        </div>
-                    </div>
-                    <div className="content">
-                        {finalClassement.map((project, index) =>
-                                <div className="projectResult">
-                                    <div className="projectName">
-                        <span>
-                            {project.label}
-                        </span>
-                                    </div>
-                                    <div className="finalScore">
-                       <span>
-                           {parseFloat(project.score.toString()).toFixed(2)} %
-                       </span>
-                                    </div>
-                                    <div className="ranking">
-                        <span>
-                            {index + 1}
-                        </span>
-                                    </div>
-                                </div>
-                        )}
-                    </div>
-                </div>
-            </div>*/}
             <Layout>
                 <div className="top-side">
                     <ProjectClassement/>
@@ -87,8 +38,8 @@ const FinalResult = () => {
                 <div className="bottom-side">
                     <JuryClassement/>
                 </div>
-                </Layout>
+            </Layout>
         </div>
-)
+    )
 }
 export default FinalResult

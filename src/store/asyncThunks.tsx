@@ -61,11 +61,11 @@ export const editEvalutions = createAsyncThunk(
 
     }
 )
-
+//g1,g2
 export const getFinalResult = createAsyncThunk(
     'getFinalResult',
-    async () => {
-        const url = `api/projects/global-classification`
+    async (groupe:string) => {
+        const url = `api/projects/global-classification?groupe=${groupe}`
         const response = await axiosInstance.get(url);
         return response.data
 

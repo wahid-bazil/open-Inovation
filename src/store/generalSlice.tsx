@@ -33,7 +33,8 @@ export interface Interface_General_State {
     getFinalResultPending: boolean,
     getUserAccountPending: boolean,
     userAccount: any[],
-    isSubmitDone: boolean
+    isSubmitDone: boolean,
+    currentGroup:string
 }
 
 const General_State: Interface_General_State = {
@@ -54,6 +55,7 @@ const General_State: Interface_General_State = {
     finalClassemet: [],
 
 
+
     //loadingState
     getEvalutionsPending: false,
     getIndivClassementPending: false,
@@ -61,6 +63,7 @@ const General_State: Interface_General_State = {
     getFinalResultPending: false,
     getUserAccountPending: false,
     isSubmitDone: false,
+    currentGroup:"",
 
     userAccount: []
 
