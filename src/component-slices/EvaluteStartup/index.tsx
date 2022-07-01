@@ -22,7 +22,7 @@ const EvaluteStartupIndex = () => {
 
     const navigate = useNavigate();
 
-    
+
 
 
 
