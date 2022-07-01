@@ -5,7 +5,7 @@ import SliceTitle from "../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
 import {Istate, useAppDispatch} from "../../store";
 import useQuery from "../../hooks/useQuery";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -33,6 +33,13 @@ const EvaluteStartupIndex = () => {
     const isEvalutionsSaving = useSelector((state: Istate) => state.general_Slice.isEvalutionsSaving)
     const currentProjectTiltle = useSelector((state: Istate) => state.general_Slice.currentProjectTitle)
 
+    //refs
+    const classementRef = useRef<HTMLDivElement>(null);
+    const executeScroll = () => {
+        console.log(classementRef.current,"classementRef.current")
+        classementRef.current?.scrollIntoView()
+    }
+
 
     //effects
     useEffect(() => {
@@ -44,9 +51,7 @@ const EvaluteStartupIndex = () => {
     }, [role])
 
     //actions
-    const sumbit = ()=>{
 
-    }
 
     return (
         <Layout>
@@ -63,11 +68,11 @@ const EvaluteStartupIndex = () => {
                 {step === "evalute" ?
                     <div className="top-side">
                         <SliceTitle title={currentProjectTiltle}/>
-                        <TableNote/>
+                        <TableNote executeScroll={executeScroll}/>
                     </div>
                     : null}
                 <div className="bottom-side">
-                    <Classement/>
+                    <Classement ref={classementRef}/>
                 </div>
             </div>
         </Layout>

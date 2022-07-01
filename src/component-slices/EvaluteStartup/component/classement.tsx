@@ -12,7 +12,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
 import {Checkbox} from "@mui/material";
 
-const Classement = () => {
+const Classement: React.FC<{ ref: any }> = (props) => {
 
 
     const dispatch = useAppDispatch()
@@ -54,7 +54,7 @@ const Classement = () => {
     }
 
     const isDisabled = () => {
-        if (isDone==="done") {
+        if (isDone === "done") {
             return "invisible"
         }
         let index = 0
@@ -82,7 +82,7 @@ const Classement = () => {
             })
     }
     const getClasse = (project: any) => {
-        if (isDone==="done") {
+        if (isDone === "done") {
             return "invisible"
         } else {
             if (project.scored) {
@@ -95,7 +95,7 @@ const Classement = () => {
 
 
     return (
-        <div className="Classement">
+        <div ref={props.ref} className="Classement">
             <Dialog
                 open={isDialogOpen}
                 aria-labelledby="alert-dialog-title"
@@ -125,7 +125,7 @@ const Classement = () => {
                     <span>Ranking</span>
                 </div>
                 <div className={title === "ADMIN" ? "d-none" : "action"}>
-                    <span>{isDone==="done" ? "Final Submission" : "Action"}</span>
+                    <span>{isDone === "done" ? "Final Submission" : "Action"}</span>
                 </div>
             </div>
             <div className="content">
@@ -142,7 +142,7 @@ const Classement = () => {
                             <span>{project.scored ? index + 1 : "-"}</span>
                         </div>
                         <div className={title === "ADMIN" ? "d-none" : "action"}>
-                            {isDone==="done" ?
+                            {isDone === "done" ?
                                 <Checkbox checked={true}/>
                                 : <button title={project.label} onClick={(e) => setCurrentEdit(e, project.scored)}
                                           id={project.id.toString()}
