@@ -12,6 +12,7 @@ import DialogContent from "@mui/material/DialogContent";
 import CircularProgress from "@mui/material/CircularProgress";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogActions from "@mui/material/DialogActions";
+import Layout from "../generalComponent/layout";
 
 const EvaluteStartupIndex = () => {
 
@@ -39,26 +40,28 @@ const EvaluteStartupIndex = () => {
     }, [role])
 
     return (
-        <div className="EvaluteStartupIndex">
-            <Dialog
-                open={getEvalutionsPending || getIndivClassementPending || isEvalutionsSaving}
-                aria-labelledby="alert-dialog-title"
-                aria-describedby="alert-dialog-description"
-            >
-                <DialogContent>
-                    <CircularProgress style={{color: "#CF113F"}}/>
-                </DialogContent>
-            </Dialog>
-            {step === "evalute" ?
-                <div className="top-side">
-                    <SliceTitle title={currentProjectTiltle}/>
-                    <TableNote />
+        <Layout>
+            <div className="EvaluteStartupIndex">
+                <Dialog
+                    open={getEvalutionsPending || getIndivClassementPending || isEvalutionsSaving}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogContent>
+                        <CircularProgress style={{color: "#CF113F"}}/>
+                    </DialogContent>
+                </Dialog>
+                {step === "evalute" ?
+                    <div className="top-side">
+                        <SliceTitle title={currentProjectTiltle}/>
+                        <TableNote/>
+                    </div>
+                    : null}
+                <div className="bottom-side">
+                    <Classement/>
                 </div>
-                : null}
-            <div className="bottom-side">
-                <Classement />
             </div>
-        </div>
+        </Layout>
     )
 }
 export default EvaluteStartupIndex

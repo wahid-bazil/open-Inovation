@@ -42,6 +42,8 @@ export const getEvalutions = createAsyncThunk(
     }
 )
 
+
+
 export const postEvalutions = createAsyncThunk(
     'postEvalutions',
     async (paylod: evalution[]) => {
@@ -56,6 +58,16 @@ export const editEvalutions = createAsyncThunk(
     async (paylod: evalution[]) => {
         const url = `api/evaluations/list`
         const response = await axiosInstance.put(url, paylod);
+        return response.data
+
+    }
+)
+
+export const getFinalResult = createAsyncThunk(
+    'getFinalResult',
+    async () => {
+        const url = `api/projects/global-classification`
+        const response = await axiosInstance.get(url);
         return response.data
 
     }

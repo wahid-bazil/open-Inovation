@@ -28,11 +28,8 @@ const Classement = () => {
 
     //effects
     useEffect(() => {
-        if (true) {
-            dispatch(getIndivClassement(Number(userId))).unwrap()
-        } else {
-            navigate("/")
-        }
+        dispatch(getIndivClassement(Number(userId))).unwrap()
+
     }, [])
 
     //actions
@@ -85,10 +82,10 @@ const Classement = () => {
                     <div id={project.id.toString()}
                          className={project.id === currentEdit ? "projectResult active" : "projectResult"}>
                         <div className="projectName">
-                            <span>{project.label}</span>
+                            <span className="projectName">{project.label}</span>
                         </div>
                         <div className="note">
-                            <span>{project.score} %</span>
+                            <span>{parseFloat(project.score.toString()).toFixed(2)} %</span>
                         </div>
                         <div className="ranking">
                             <span>{project.scored ? index + 1 : "-"}</span>
