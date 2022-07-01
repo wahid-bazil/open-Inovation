@@ -21,9 +21,9 @@
   span{
     display: flex;
     align-items: center;
-    font-weight: 500;
-    @include th-4;
-   // background-color: #F7B38E;
+    font-weight: 600;
+    @include th-3;
+   background-color: #F7B38E;
     padding: .5rem;
     border-radius: 6px;
   }

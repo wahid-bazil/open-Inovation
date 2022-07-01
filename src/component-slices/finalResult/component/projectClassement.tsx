@@ -18,7 +18,7 @@ const ProjectClassement = () => {
     return (
         <div className="ProjectClassement">
             <div>
-                <SliceTitle title={"Team Ranking"}/>
+                <SliceTitle title={"TEAM RANKING"}/>
                 <div className="table">
                     <div className="titles">
                         <div/>

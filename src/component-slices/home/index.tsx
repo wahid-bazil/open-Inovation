@@ -1,8 +1,12 @@
 import {useNavigate} from "react-router-dom";
 import Layout from "../generalComponent/layout";
+import {useSelector} from "react-redux";
+import {Istate} from "../../store";
 
 const HomeIndex = () => {
     const navigate = useNavigate();
+
+    const isSubmitDone = useSelector((state: Istate) => state.general_Slice.isSubmitDone)
 
     //actios
     const MoveTo = (url: string) => {
@@ -22,11 +26,15 @@ const HomeIndex = () => {
                         Summary
                     </span>
                     </button>
-                    <button onClick={() => MoveTo("/evalute/evaluteProject?step=evalute")} className="summary">
+                    {isSubmitDone ? null
+                        :
+                        <button onClick={() => MoveTo("/evalute/evaluteProject?step=evalute")} className="summary">
                     <span>
                      Evaluate
                     </span>
-                    </button>
+                        </button>
+                    }
+
                 </div>
             </div>
         </Layout>

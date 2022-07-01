@@ -1,13 +1,18 @@
-.juryClassement{
-  .SliceTitle{
+.juryClassement {
+  background-image: url("../background.png");
+  background-position-x: center;
+  background-repeat: no-repeat;
+  .SliceTitle {
 
   }
-  .titles{
-    height: 50px;
-    background: #FBFBFB;
+
+  .titles {
+    height: 60px;
+    background: rgba(126, 85, 111, 0.58);
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16);
     display: flex;
     align-items: center;
+
     & > div {
       height: 40px;
       display: flex;
@@ -16,24 +21,30 @@
       @include th-5;
       width: 33.33%;
       justify-content: center;
-      color: #7E556F;
+      color: white;
       font-family: 'Poppins', sans-serif;
 
     }
   }
-  .value{
-    background: #FBFBFB;
-    border: 0.25px solid #7E556F;
-    height: 45px;
+
+  .value {
+    background: #fbfbfbc2;
+    border: 0.25px solid #7e556f57;
+    height: 55px;
     display: flex;
     margin-top: .5rem;
-    &>div{
+    margin-left: .5rem;
+    margin-right: .5rem;
+
+    & > div {
       width: 33.33%;
       display: flex;
       justify-content: center;
       align-items: center;
-      &.juryList{
-        justify-content: start!important;
+      @include th-5;
+      font-family: 'Poppins', sans-serif;
+      &.juryList {
+        justify-content: start !important;
         padding-left: 5px;
       }
     }
