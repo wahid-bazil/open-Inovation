@@ -1,7 +1,7 @@
 import axios, {AxiosStatic} from 'axios';
 
 
-const baseURL = 'https://opinotation.royalairmaroc.com/';
+const baseURL = 'https://openinnovationeval.royalairmaroc.com/';
 
 const axiosInstance = axios.create({
 
