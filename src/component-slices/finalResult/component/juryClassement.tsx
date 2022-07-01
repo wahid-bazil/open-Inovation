@@ -17,16 +17,16 @@ const JuryTable = () => {
 
     return (
         <div className="juryClassement">
-            <SliceTitle title={"Jury members state"}/>
+            <SliceTitle title={"JURY MEMBERS STATE"}/>
             <div className="titles">
                 <div className="juryList">
                     <span>List member jury</span>
                 </div>
-                <div className="date/time">
-                    <span>date/Time</span>
-                </div>
                 <div>
                     <span>Final submission</span>
+                </div>
+                <div className="date/time">
+                    <span>date/Time</span>
                 </div>
             </div>
             {userAccount.map(account => (
@@ -36,14 +36,14 @@ const JuryTable = () => {
                            {account.firstName + " " + account.lastName}
                         </span>
                     </div>
-                    <div className="date/time">
-                        <span>
-                            {account.finalSubmissonDate}
-                        </span>
-                    </div>
                     <div className="finalSubmission">
  <span>
                            {account.finalSubmisson ? "yes" : "No"}
+                        </span>
+                    </div>
+                    <div className="date/time">
+                        <span>
+                            {account.finalSubmissonDate}
                         </span>
                     </div>
                 </div>

@@ -43,7 +43,6 @@ export const getEvalutions = createAsyncThunk(
 )
 
 
-
 export const postEvalutions = createAsyncThunk(
     'postEvalutions',
     async (paylod: evalution[]) => {
@@ -78,6 +77,18 @@ export const getUserAccount = createAsyncThunk(
     async () => {
         const url = `api/user-accounts `
         const response = await axiosInstance.get(url);
+        return response.data
+
+    }
+)
+export const postSumbit = createAsyncThunk(
+    'postSumbit',
+    async (userId: number) => {
+        const url = `api/user-account/${userId}/final-submission `
+        const payload = {
+            finalSubmission: true
+        }
+        const response = await axiosInstance.post(url, payload);
         return response.data
 
     }

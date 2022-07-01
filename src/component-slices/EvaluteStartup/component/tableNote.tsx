@@ -105,7 +105,7 @@ const TableNote = () => {
                 </div>
                 <div className="note">
                      <span>
-                        1 - POUR
+                        1 - POOR
                     </span>
                 </div>
                 <div className="note">

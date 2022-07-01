@@ -9,6 +9,7 @@
         width: 33.33%;
         position: relative;
         display: flex;
+
         span {
           width: 90%;
           background-color: $color-primary;
@@ -20,6 +21,13 @@
           @include th-5;
           position: relative;
           top: 5px;
+        }
+        &.projectName{
+          span{
+            justify-content: start!important;
+            padding-left: 11%;
+
+          }
         }
       }
     }

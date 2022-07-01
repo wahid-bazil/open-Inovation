@@ -1,11 +1,16 @@
 import useQuery from "../../../hooks/useQuery";
 import React, {useEffect, useState} from "react";
-import {getIndivClassement} from "../../../store/asyncThunks";
+import {getIndivClassement, postSumbit} from "../../../store/asyncThunks";
 import {Istate, useAppDispatch} from "../../../store";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {General_Actions} from "../../../store/generalSlice";
 import {MouseEvent} from "react"
+import Dialog from "@mui/material/Dialog";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+import {Checkbox} from "@mui/material";
 
 const Classement = () => {
 
@@ -24,6 +29,11 @@ const Classement = () => {
     //states
     const projects = useSelector((state: Istate) => state.general_Slice.projects)
     const currentEdit = useSelector((state: Istate) => state.general_Slice.currentProjecToEdit)
+    const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const isDone = useSelector((state: Istate) => state.general_Slice.isSubmitDone)
+
+    //const
+    const msg = "Your assessment was successfully completed."
 
 
     //effects
@@ -43,6 +53,9 @@ const Classement = () => {
     }
 
     const isDisabled = () => {
+        if (isDone) {
+            return "invisible"
+        }
         let index = 0
         while (index < projects.length) {
             if (!projects[index].scored) {
@@ -58,9 +71,44 @@ const Classement = () => {
         }
     }
 
+    const submit = () => {
+        dispatch(postSumbit(Number(userId))).unwrap()
+            .then(() => {
+                dispatch(General_Actions.setIsSubmit(true))
+                setIsDialogOpen(false)
+            })
+    }
+    const getClasse = (project: any) => {
+        if (isDone) {
+            return "invisible"
+        } else {
+            if (project.scored) {
+                return "evaluted"
+            } else {
+                return ""
+            }
+        }
+    }
+
 
     return (
         <div className="Classement">
+            <Dialog
+                open={isDialogOpen}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        <span className="warning">{msg}</span>
+                    </DialogContentText>
+                </DialogContent>
+
+                <DialogActions>
+                    <button className="submit" onClick={submit}>close</button>
+                </DialogActions>
+
+            </Dialog>
             <div className="titles">
                 <div className="projectName">
                     <span>
@@ -74,7 +122,7 @@ const Classement = () => {
                     <span>Ranking</span>
                 </div>
                 <div className={title === "ADMIN" ? "d-none" : "action"}>
-                    <span>Action</span>
+                    <span>{isDone ? "Final Submission" : "Action"}</span>
                 </div>
             </div>
             <div className="content">
@@ -91,17 +139,19 @@ const Classement = () => {
                             <span>{project.scored ? index + 1 : "-"}</span>
                         </div>
                         <div className={title === "ADMIN" ? "d-none" : "action"}>
-                            <button title={project.label} onClick={(e) => setCurrentEdit(e, project.scored)}
-                                    id={project.id.toString()}
-                                    className={project.scored ? "evaluted" : ""}>
-                                <span>{project.scored ? "Edit" : "Evalute"}</span>
-                            </button>
+                            {isDone ?
+                                <Checkbox checked={true}/>
+                                : <button title={project.label} onClick={(e) => setCurrentEdit(e, project.scored)}
+                                          id={project.id.toString()}
+                                          className={getClasse(project)}>
+                                    <span>{project.scored ? "Edit" : "Evalute"}</span>
+                                </button>}
                         </div>
 
                     </div>
                 )}
                 {step === "evalute" ? <div className="submit">
-                    <button className={isDisabled()}>
+                    <button onClick={() => setIsDialogOpen(true)} className={isDisabled()}>
                         <span>
                             Submission
                         </span>

@@ -1,12 +1,25 @@
 .MuiDialogContentText-root{
-  span{
+  span.err{
     color: $color-primary;
+    font-family: 'Poppins', sans-serif;
+  }
+  span.warning{
+    color: #3D3838;
     font-family: 'Poppins', sans-serif;
   }
 }
 .MuiDialogActions-root{
-  button{
+  display: flex;
+  justify-content: center!important;
+  button.auth{
     @include button-primary;
     padding: .5rem;
+  }
+  button.submit{
+    @include button-primary;
+    background-color: #7E556F!important;
+    padding: 0.5rem 4rem;
+    position: relative;
+    top: -10px;
   }
 }

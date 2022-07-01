@@ -53,6 +53,9 @@ const AuthIndex = () => {
                 if(res.title==="ADMIN"){
                     navigate("/evalute/result")
                 }
+                else if (res.finalSubmission){
+                    navigate("/evalute/evaluteProject")
+                }
                 else{
                     navigate("/evalute")
                 }
@@ -77,13 +80,13 @@ const AuthIndex = () => {
                 <DialogContent>
                     {isPending ? <CircularProgress style={{color: "#CF113F"}}/> :
                         <DialogContentText id="alert-dialog-description">
-                            <span>{errMsg}</span>
+                            <span className="err">{errMsg}</span>
                         </DialogContentText>
                     }
                 </DialogContent>
                 {isFailed ?
                     <DialogActions>
-                        <button onClick={closeDialog}>Close</button>
+                        <button className="auth" onClick={closeDialog}>Close</button>
                     </DialogActions>
                     :
                     null
@@ -109,7 +112,8 @@ const AuthIndex = () => {
                     <input name={"username"} onChange={handlChange} value={userLogIn.username} placeholder={"Username"}/>
                     <input type={"password"} name={"password"} onChange={handlChange} value={userLogIn.password}
                            placeholder={"Password"}/>
-                    <button onClick={logIn} type="submit">Se connecter</button>
+                    
+                    <button onClick={logIn} type="submit">Log in</button>
                 </form>
                 <div className="footer">
                     <span>Created with</span><i><AiTwotoneHeart/></i><span> by RAM digital factory</span>

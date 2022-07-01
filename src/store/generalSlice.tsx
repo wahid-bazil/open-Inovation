@@ -5,7 +5,7 @@ import {
     getFinalResult,
     getIndivClassement,
     getUser, getUserAccount,
-    postEvalutions
+    postEvalutions, postSumbit
 } from "./asyncThunks";
 
 
@@ -30,9 +30,10 @@ export interface Interface_General_State {
     getEvalutionsPending: boolean,
     getIndivClassementPending: boolean,
     isEvalutionsSaving: boolean,
-    getFinalResultPending:boolean,
-    getUserAccountPending:boolean,
-    userAccount:any[]
+    getFinalResultPending: boolean,
+    getUserAccountPending: boolean,
+    userAccount: any[],
+    isSubmitDone: boolean
 }
 
 const General_State: Interface_General_State = {
@@ -50,7 +51,6 @@ const General_State: Interface_General_State = {
     currentProjecToEdit: null,
     currentProjectTitle: "",
     isCurrentProjectEvaluted: false,
-
     finalClassemet: [],
 
 
@@ -59,9 +59,10 @@ const General_State: Interface_General_State = {
     getIndivClassementPending: false,
     isEvalutionsSaving: false,
     getFinalResultPending: false,
-    getUserAccountPending:false,
+    getUserAccountPending: false,
+    isSubmitDone: false,
 
-    userAccount:[]
+    userAccount: []
 
 
 };
@@ -78,6 +79,9 @@ const General_Slice = createSlice({
         },
         switchCurrentProjectStatus(state, action: PayloadAction<boolean>) {
             state.isCurrentProjectEvaluted = action.payload
+        },
+        setIsSubmit(state, action) {
+            state.isSubmitDone = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -92,13 +96,16 @@ const General_Slice = createSlice({
                 state.lastname = action.payload.lastname
                 state.titleValue = action.payload.titleValue
                 state.prefix = action.payload.prefix
+                state.isSubmitDone = action.payload.finalSubmission
                 localStorage.setItem('userId', action.payload.id);
                 localStorage.setItem('title', action.payload.title);
                 localStorage.setItem('firstname', action.payload.firstname);
                 localStorage.setItem('lastname', action.payload.lastname);
                 localStorage.setItem('titleValue', action.payload.titleValue);
                 localStorage.setItem('prefix', action.payload.prefix);
-                localStorage.setItem('prefix', action.payload.prefix);
+                if (action.payload.finalSubmission) {
+                    localStorage.setItem('submit', "done");
+                }
 
             })
 
@@ -160,6 +167,14 @@ const General_Slice = createSlice({
             .addCase(getUserAccount.fulfilled, (state, action) => {
                 state.userAccount = action.payload
                 state.getUserAccountPending = false
+            })
+
+            //postSumbit
+            .addCase(postSumbit.pending, (state, action) => {
+
+            })
+            .addCase(postSumbit.fulfilled, (state, action) => {
+                state.isSubmitDone = true
             })
 
 
