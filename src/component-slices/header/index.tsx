@@ -6,7 +6,7 @@ import {Istate} from "../../store";
 const HeaderIndex = () => {
     const navigate = useNavigate();
     const moveTo = () => {
-        navigate("/login")
+        navigate("/")
     }
     //const
     const firstname = localStorage.getItem("firstname")

@@ -73,5 +73,15 @@ export const getFinalResult = createAsyncThunk(
     }
 )
 
+export const getUserAccount = createAsyncThunk(
+    'getUserAccount',
+    async () => {
+        const url = `api/user-accounts `
+        const response = await axiosInstance.get(url);
+        return response.data
+
+    }
+)
+
 
 

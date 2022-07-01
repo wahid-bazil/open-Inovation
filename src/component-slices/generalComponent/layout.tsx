@@ -9,7 +9,7 @@ const Layout: React.FC<any> = (props) => {
 
     useEffect(() => {
         if (!localStorage.getItem("userId")) {
-            navigate("/login")
+            navigate("/")
         }
     }, [])
 
