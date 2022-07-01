@@ -76,6 +76,7 @@ const TableNote: React.FC<{ executeScroll: any }> = (props) => {
 
     //function
     const isDisabled = () => {
+        
         let index = 0
         while (index < evalutions.length) {
             if (evalutions[index].note === null) {
