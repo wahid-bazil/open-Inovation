@@ -39,16 +39,17 @@
       & > div {
         width: 25%;
         display: flex;
-        justify-content: start;
+        justify-content: center;
         align-items: center;
         height: 40px;
         position: relative;
-
+        &.projectName{
+          justify-content: start!important;
+          padding-left: 10px;
+        }
         span {
           @include th-6;
           font-family: 'Poppins', sans-serif;
-          text-align: start;
-          padding-left: 10px;
         }
 
         button {
@@ -70,6 +71,7 @@
 
         }
       }
+
     }
 
     .submit {

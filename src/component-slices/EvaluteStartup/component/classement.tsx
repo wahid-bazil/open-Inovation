@@ -82,7 +82,7 @@ const Classement = () => {
                     <div id={project.id.toString()}
                          className={project.id === currentEdit ? "projectResult active" : "projectResult"}>
                         <div className="projectName">
-                            <span>{project.label}</span>
+                            <span className="projectName">{project.label}</span>
                         </div>
                         <div className="note">
                             <span>{parseFloat(project.score.toString()).toFixed(2)} %</span>
