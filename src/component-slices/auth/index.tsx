@@ -112,6 +112,7 @@ const AuthIndex = () => {
                     <input name={"username"} onChange={handlChange} value={userLogIn.username} placeholder={"Username"}/>
                     <input type={"password"} name={"password"} onChange={handlChange} value={userLogIn.password}
                            placeholder={"Password"}/>
+                    
                     <button onClick={logIn} type="submit">Log in</button>
                 </form>
                 <div className="footer">
