@@ -118,11 +118,9 @@ const General_Slice = createSlice({
                 if (state.currentProjecToEdit === null) {
                     state.currentProjecToEdit = action.payload[0].id
                     state.currentProjectTitle = action.payload[0].label
-                    if (action.payload[0].scored) {
-                        state.isCurrentProjectEvaluted = true
-                    } else {
-                        state.isCurrentProjectEvaluted = false
-                    }
+                    console.log(action.payload[0].scored ,action.payload[0].scored)
+                    state.isCurrentProjectEvaluted= action.payload[0].scored
+                   
                 }
                 state.getIndivClassementPending = false
             })
