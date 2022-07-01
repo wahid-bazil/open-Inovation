@@ -3,9 +3,9 @@ import Classement from "./component/classement";
 import HeaderIndex from "../header";
 import SliceTitle from "../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
-import {Istate} from "../../store";
+import {Istate, useAppDispatch} from "../../store";
 import useQuery from "../../hooks/useQuery";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -18,8 +18,12 @@ const EvaluteStartupIndex = () => {
 
     let query = useQuery();
     const step = query.get('step')
+    const dispatch = useAppDispatch()
 
     const navigate = useNavigate();
+
+    //const
+    const msg = ""
 
     //state
     const role = useSelector((state: Istate) => state.general_Slice.userCategory)
@@ -27,7 +31,7 @@ const EvaluteStartupIndex = () => {
     const getIndivClassementPending = useSelector((state: Istate) => state.general_Slice.getIndivClassementPending)
     const isEvalutionsSaving = useSelector((state: Istate) => state.general_Slice.isEvalutionsSaving)
     const currentProjectTiltle = useSelector((state: Istate) => state.general_Slice.currentProjectTitle)
-    const projects = useSelector((state: Istate) => state.general_Slice.projects)
+    const [isDialogOpen , setDialogOpen] = useState(false)
 
 
     //effects
@@ -38,6 +42,11 @@ const EvaluteStartupIndex = () => {
         }
         window.scrollTo(0, 0)
     }, [role])
+
+    //actions
+    const sumbit = ()=>{
+
+    }
 
     return (
         <Layout>
@@ -50,6 +59,22 @@ const EvaluteStartupIndex = () => {
                     <DialogContent>
                         <CircularProgress style={{color: "#CF113F"}}/>
                     </DialogContent>
+                </Dialog>
+                <Dialog
+                    open={isDialogOpen}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            <span>{msg}</span>
+                        </DialogContentText>
+                    </DialogContent>
+
+                    <DialogActions>
+                        <button onClick={()=>setDialogOpen(false)}>Close</button>
+                    </DialogActions>
+
                 </Dialog>
                 {step === "evalute" ?
                     <div className="top-side">

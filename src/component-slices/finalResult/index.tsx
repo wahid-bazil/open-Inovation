@@ -19,14 +19,13 @@ const FinalResult = () => {
     //const
     const title = localStorage.getItem("title")
 
-    const finalClassement = useSelector((state: Istate) => state.general_Slice.finalClassemet)
     const getFinalResultPending = useSelector((state: Istate) => state.general_Slice.getFinalResultPending)
 
     //effects
     useEffect(() => {
         if (title != "ADMIN") {
             localStorage.clear();
-            navigate("/login")
+            navigate("/")
         } else {
             dispatch(getFinalResult()).unwrap()
         }

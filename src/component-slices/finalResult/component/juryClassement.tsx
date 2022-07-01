@@ -1,7 +1,19 @@
 import SliceTitle from "../../generalComponent/sliceTitle";
+import {useSelector} from "react-redux";
+import {Istate, useAppDispatch} from "../../../store";
+import {useEffect} from "react";
+import {getFinalResult, getUserAccount} from "../../../store/asyncThunks";
 
 const JuryTable = () => {
     const list = [1, 2, 3, 4, 5, 6, 7]
+
+    const dispatch = useAppDispatch()
+
+    const userAccount = useSelector((state: Istate) => state.general_Slice.userAccount)
+
+    useEffect(() => {
+        dispatch(getUserAccount())
+    }, [])
 
     return (
         <div className="juryClassement">
@@ -17,21 +29,21 @@ const JuryTable = () => {
                     <span>Final submission</span>
                 </div>
             </div>
-            {list.map(element => (
+            {userAccount.map(account => (
                 <div className="value">
                     <div className="juryList">
                         <span>
-                            Lorem ipsum
+                           {account.firstName + " " + account.lastName}
                         </span>
                     </div>
                     <div className="date/time">
                         <span>
-                            Lorem ipsum
+                            {account.finalSubmissonDate}
                         </span>
                     </div>
                     <div className="finalSubmission">
  <span>
-                            Lorem ipsum
+                           {account.finalSubmisson ? "yes" : "No"}
                         </span>
                     </div>
                 </div>

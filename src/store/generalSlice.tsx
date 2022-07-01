@@ -4,7 +4,7 @@ import {
     getEvalutions,
     getFinalResult,
     getIndivClassement,
-    getUser,
+    getUser, getUserAccount,
     postEvalutions
 } from "./asyncThunks";
 
@@ -30,7 +30,9 @@ export interface Interface_General_State {
     getEvalutionsPending: boolean,
     getIndivClassementPending: boolean,
     isEvalutionsSaving: boolean,
-    getFinalResultPending:boolean
+    getFinalResultPending:boolean,
+    getUserAccountPending:boolean,
+    userAccount:any[]
 }
 
 const General_State: Interface_General_State = {
@@ -56,7 +58,10 @@ const General_State: Interface_General_State = {
     getEvalutionsPending: false,
     getIndivClassementPending: false,
     isEvalutionsSaving: false,
-    getFinalResultPending: false
+    getFinalResultPending: false,
+    getUserAccountPending:false,
+
+    userAccount:[]
 
 
 };
@@ -80,7 +85,6 @@ const General_Slice = createSlice({
 
             //getUser
             .addCase(getUser.fulfilled, (state, action) => {
-                console.log(action.payload, "as")
                 state.username = action.payload.username
                 state.userCategory = action.payload.title
                 state.userId = action.payload.id
@@ -93,6 +97,7 @@ const General_Slice = createSlice({
                 localStorage.setItem('firstname', action.payload.firstname);
                 localStorage.setItem('lastname', action.payload.lastname);
                 localStorage.setItem('titleValue', action.payload.titleValue);
+                localStorage.setItem('prefix', action.payload.prefix);
                 localStorage.setItem('prefix', action.payload.prefix);
 
             })
@@ -147,6 +152,16 @@ const General_Slice = createSlice({
                 state.finalClassemet = action.payload
                 state.getFinalResultPending = false
             })
+
+            //getUserAccount
+            .addCase(getUserAccount.pending, (state, action) => {
+                state.getUserAccountPending = true
+            })
+            .addCase(getUserAccount.fulfilled, (state, action) => {
+                state.userAccount = action.payload
+                state.getUserAccountPending = false
+            })
+
 
     },
 });

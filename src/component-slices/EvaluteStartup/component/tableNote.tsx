@@ -100,22 +100,22 @@ const TableNote = () => {
                 </div>
                 <div className="note">
                     <span>
-                        0
+                        0 - NA
                     </span>
                 </div>
                 <div className="note">
                      <span>
-                        1
+                        1 - POUR
                     </span>
                 </div>
                 <div className="note">
                      <span>
-                        2
+                        2 - FAIR
                     </span>
                 </div>
                 <div className="note">
                       <span>
-                        3
+                        3 - EXCELENT
                     </span>
                 </div>
                 <div className="weight">

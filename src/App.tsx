@@ -18,10 +18,10 @@ function App() {
             <BrowserRouter>
                 {/*<Routes/>*/}
                 <Routes>
-                    <Route path="/login" element={<AuthIndex/>}/>
                     <Route path="/evalute" element={<HomeIndex/>}/>
                     <Route path="/evalute/evaluteProject" element={<EvaluteStartupIndex/>}/>
                     <Route path="/evalute/result" element={<FinalResult/>}/>
+                    <Route path="/" element={<AuthIndex/>}/>
                 </Routes>
             </BrowserRouter>
         </div>
