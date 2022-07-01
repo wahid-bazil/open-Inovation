@@ -34,17 +34,16 @@ const ProjectClassement = () => {
                         </div>
                     </div>
                     <div className="content">
-                        //@ty-ignore
                         {finalClassemet.map((project, index) =>
                                 <div className="projectResult">
                                     <div className="projectName">
-                        <span>
-                           {project.label}
-                        </span>
+                                        <span>
+                                           {project.label}
+                                        </span>
                                     </div>
                                     <div className="finalScore">
                        <span>
-                             {project.score} %
+                           {parseFloat(project.score.toString()).toFixed(2)} %
                        </span>
                                     </div>
                                     <div className="ranking">

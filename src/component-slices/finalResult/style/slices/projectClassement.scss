@@ -32,13 +32,17 @@
         display: flex;
         background: #FFFFFF;
         box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16);
-        height: 40px;
+        height: 50px;
         margin-bottom: .5rem;
+        align-items: center;
 
         & > div {
           width: 33.33%;
           display: flex;
           justify-content: center;
+          &.projectName{
+            justify-content: start!important;
+          }
 
           span {
             font-family: 'Poppins', sans-serif;
