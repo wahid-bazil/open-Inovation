@@ -77,6 +77,7 @@ const Classement = () => {
             .then(() => {
                 dispatch(General_Actions.setIsSubmit(true))
                 setIsDialogOpen(false)
+                localStorage.setItem('submit', "done");
                 navigate("/evalute/evaluteProject")
             })
     }
