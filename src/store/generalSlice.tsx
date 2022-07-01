@@ -110,7 +110,6 @@ const General_Slice = createSlice({
                 if (action.payload.finalSubmission) {
                     localStorage.setItem('submit', "done");
                 }
-
             })
 
             //getIndivClassement
