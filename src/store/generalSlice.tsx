@@ -49,6 +49,9 @@ const General_Slice = createSlice({
             state.currentProjecToEdit = action.payload.id
             state.currentProjectTitle = action.payload.title
         },
+        switchCurrentProjectStatus(state, action: PayloadAction<boolean>) {
+            state.isCurrentProjectEvaluted = action.payload
+        }
     },
     extraReducers: (builder) => {
         builder

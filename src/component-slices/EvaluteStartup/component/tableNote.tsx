@@ -12,6 +12,7 @@ import {
 import {useNavigate} from "react-router-dom";
 import {evalution} from "../../../type";
 import {MouseEvent} from "react";
+import {General_Actions} from "../../../store/generalSlice";
 
 
 let isInitial = true
@@ -62,8 +63,10 @@ const TableNote = () => {
                 })
         } else {
             dispatch(postEvalutions(evalutions)).unwrap()
-                .then(() => {
-                    dispatch(getIndivClassement(Number(userId))).unwrap()
+                .then((res) => {
+                    setEvalutions(res)
+                    dispatch(General_Actions.switchCurrentProjectStatus(true))
+
                 })
         }
     }
