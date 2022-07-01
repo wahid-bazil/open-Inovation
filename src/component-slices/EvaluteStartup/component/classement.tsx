@@ -25,12 +25,13 @@ const Classement = () => {
     //const
     const userId = localStorage.getItem("userId")
     const title = localStorage.getItem("title")
+    const isDone = localStorage.getItem("submit")
 
     //states
     const projects = useSelector((state: Istate) => state.general_Slice.projects)
     const currentEdit = useSelector((state: Istate) => state.general_Slice.currentProjecToEdit)
     const [isDialogOpen, setIsDialogOpen] = useState(false)
-    const isDone = useSelector((state: Istate) => state.general_Slice.isSubmitDone)
+
 
     //const
     const msg = "Your assessment was successfully completed."
@@ -53,7 +54,7 @@ const Classement = () => {
     }
 
     const isDisabled = () => {
-        if (isDone) {
+        if (isDone==="done") {
             return "invisible"
         }
         let index = 0
@@ -76,6 +77,7 @@ const Classement = () => {
             .then(() => {
                 dispatch(General_Actions.setIsSubmit(true))
                 setIsDialogOpen(false)
+                navigate("/evalute/evaluteProject")
             })
     }
     const getClasse = (project: any) => {
@@ -105,7 +107,7 @@ const Classement = () => {
                 </DialogContent>
 
                 <DialogActions>
-                    <button className="submit" onClick={submit}>close</button>
+                    <button className="submit" onClick={submit}>Confirm</button>
                 </DialogActions>
 
             </Dialog>
@@ -122,7 +124,7 @@ const Classement = () => {
                     <span>Ranking</span>
                 </div>
                 <div className={title === "ADMIN" ? "d-none" : "action"}>
-                    <span>{isDone ? "Final Submission" : "Action"}</span>
+                    <span>{isDone==="done" ? "Final Submission" : "Action"}</span>
                 </div>
             </div>
             <div className="content">

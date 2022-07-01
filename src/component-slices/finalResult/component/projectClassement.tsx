@@ -5,7 +5,7 @@ import {Istate, useAppDispatch} from "../../../store";
 import {getFinalResult} from "../../../store/asyncThunks";
 
 const ProjectClassement = () => {
-    const list = [1, 2, 3, 4, 5, 6]
+
     const dispatch = useAppDispatch()
 
     const finalClassemet = useSelector((state: Istate) => state.general_Slice.finalClassemet)

@@ -1,8 +1,9 @@
 import SliceTitle from "../../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
 import {Istate, useAppDispatch} from "../../../store";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import {getFinalResult, getUserAccount} from "../../../store/asyncThunks";
+import {Checkbox} from "@mui/material";
 
 const JuryTable = () => {
     const list = [1, 2, 3, 4, 5, 6, 7]
@@ -38,7 +39,7 @@ const JuryTable = () => {
                     </div>
                     <div className="finalSubmission">
  <span>
-                           {account.finalSubmisson ? "yes" : "No"}
+                           {account.finalSubmisson ? <Checkbox checked={true}/> : <Checkbox checked={false} disabled/>}
                         </span>
                     </div>
                     <div className="date/time">
