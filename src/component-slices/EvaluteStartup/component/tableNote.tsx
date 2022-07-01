@@ -16,7 +16,7 @@ import {General_Actions} from "../../../store/generalSlice";
 
 
 let isInitial = true
-const TableNote = () => {
+const TableNote: React.FC<{ executeScroll: any }> = (props) => {
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -70,6 +70,8 @@ const TableNote = () => {
 
                 })
         }
+        window.scrollTo(0,500)
+        //props.executeScroll()
     }
 
     //function
@@ -125,7 +127,7 @@ const TableNote = () => {
                 </div>
             </div>
             {evalutions.map((evalution, index) => (
-                <div  className={(index + 1 % 2 === 0 ? "value " : "value color-flow")}>
+                <div className={(index + 1 % 2 === 0 ? "value " : "value color-flow")}>
                     <div className="criteria-label">
                         <span>{evalution.criteria.label}</span>
                     </div>
