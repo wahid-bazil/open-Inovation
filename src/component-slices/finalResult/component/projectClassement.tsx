@@ -1,7 +1,7 @@
 import SliceTitle from "../../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
 import {useEffect} from "react";
-import {useAppDispatch} from "../../../store";
+import {Istate, useAppDispatch} from "../../../store";
 import {getFinalResult} from "../../../store/asyncThunks";
 
 const ProjectClassement = () => {
@@ -34,6 +34,7 @@ const ProjectClassement = () => {
                         </div>
                     </div>
                     <div className="content">
+                        //@ty-ignore
                         {finalClassemet.map((project, index) =>
                                 <div className="projectResult">
                                     <div className="projectName">

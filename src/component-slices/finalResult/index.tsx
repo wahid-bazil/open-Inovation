@@ -15,6 +15,7 @@ const FinalResult = () => {
     const title = localStorage.getItem("title")
 
     const finalClassement = useSelector((state: Istate) => state.general_Slice.finalClassemet)
+    const getFinalResultPending = useSelector((state:Istate)=>state.general_Slice.getFinalResultPending)
 
     //effects
     useEffect(() => {
@@ -28,7 +29,7 @@ const FinalResult = () => {
     return (
         <div className="FinalResult">
             <Dialog
-                open={getEvalutionsPending || getIndivClassementPending || isEvalutionsSaving}
+                open={getFinalResultPending}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >

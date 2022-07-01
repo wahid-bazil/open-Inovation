@@ -29,7 +29,8 @@ export interface Interface_General_State {
     //loadingState
     getEvalutionsPending: boolean,
     getIndivClassementPending: boolean,
-    isEvalutionsSaving: boolean
+    isEvalutionsSaving: boolean,
+    getFinalResultPending:boolean
 }
 
 const General_State: Interface_General_State = {
@@ -143,7 +144,7 @@ const General_Slice = createSlice({
                 state.getFinalResultPending = true
             })
             .addCase(getFinalResult.fulfilled, (state, action) => {
-                state.finalClassemet = actions.payload
+                state.finalClassemet = action.payload
                 state.getFinalResultPending = false
             })
 
