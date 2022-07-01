@@ -6,11 +6,18 @@ import {Istate} from "../../store";
 const HeaderIndex = () => {
     const navigate = useNavigate();
     const moveTo = () => {
-        navigate("/")
+        navigate("/login")
     }
     //const
-    const userName = localStorage.getItem("username")
-    const category = localStorage.getItem("title")
+    const firstname = localStorage.getItem("firstname")
+    const lastname = localStorage.getItem('lastname')
+    const titleValue = localStorage.getItem("titleValue")
+    const prefix = localStorage.getItem("prefix")
+
+    /*  localStorage.setItem('firstname', action.payload.firstname.toString());
+      localStorage.setItem('lastname', action.payload.lastname.toString());
+      localStorage.setItem('titleValue', action.payload.titleValue.toString());
+      localStorage.setItem('prefix', action.payload.prefix.toString());*/
 
     return (
         <div className="HeaderIndex">
@@ -27,10 +34,10 @@ const HeaderIndex = () => {
             </div>
             <div className="bottom-side">
                 <div className="userName">
-                    <span>{userName}</span>
+                    <span>{prefix + " " + firstname + " " + lastname}</span>
                 </div>
                 <div className="category">
-                    <span>{category}</span>
+                    <span>{titleValue}</span>
                 </div>
             </div>
         </div>

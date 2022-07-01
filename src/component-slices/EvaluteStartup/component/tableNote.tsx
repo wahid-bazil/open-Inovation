@@ -66,6 +66,7 @@ const TableNote = () => {
                 .then((res) => {
                     setEvalutions(res)
                     dispatch(General_Actions.switchCurrentProjectStatus(true))
+                    dispatch(getIndivClassement(Number(userId))).unwrap()
 
                 })
         }

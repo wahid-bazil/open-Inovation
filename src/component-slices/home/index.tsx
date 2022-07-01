@@ -12,18 +12,19 @@ const HomeIndex = () => {
         <Layout>
             <div className="HomeIndex">
                 <div className="title">
-                    Here you can start your Evaluation
-                    <br/>or see your Overall
+                    Here you can start your evaluation
+                    <br/> or see your summary
+
                 </div>
                 <div className="actions">
                     <button onClick={() => MoveTo("/evalute/evaluteProject")} className="evalute">
                     <span>
-                        Overall summary
+                        Summary
                     </span>
                     </button>
                     <button onClick={() => MoveTo("/evalute/evaluteProject?step=evalute")} className="summary">
                     <span>
-                       Evaluate
+                     Evaluate
                     </span>
                     </button>
                 </div>

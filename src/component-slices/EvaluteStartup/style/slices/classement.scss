@@ -39,7 +39,7 @@
       & > div {
         width: 25%;
         display: flex;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
         height: 40px;
         position: relative;
@@ -47,7 +47,8 @@
         span {
           @include th-6;
           font-family: 'Poppins', sans-serif;
-          text-align: center;
+          text-align: start;
+          padding-left: 10px;
         }
 
         button {

@@ -1,0 +1,51 @@
+.ProjectClassement {
+
+  .table {
+    font-family: 'Poppins', sans-serif;
+    .titles {
+      display: flex;
+
+      & > div {
+        width: 33.33%;
+        position: relative;
+        display: flex;
+        span {
+          width: 90%;
+          background-color: $color-primary;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          @include th-5;
+          position: relative;
+          top: 5px;
+        }
+      }
+    }
+
+    .content {
+      padding: .75rem;
+      background-color: #E6E0E4;
+
+      .projectResult {
+        display: flex;
+        background: #FFFFFF;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.16);
+        height: 40px;
+        margin-bottom: .5rem;
+
+        & > div {
+          width: 33.33%;
+          display: flex;
+          justify-content: center;
+
+          span {
+            font-family: 'Poppins', sans-serif;
+            @include th-5;
+          }
+        }
+      }
+    }
+  }
+}

@@ -7,6 +7,10 @@ export interface Interface_General_State {
     userId: string,
     username: string,
     userCategory: string,
+    firstname   :string,
+    lastname:string,
+    titleValue:string,
+    prefix:string,
 
     projects: { id: number, label: string, score: number, scored: boolean }[],
     currentProjecToEdit: number | null,
@@ -23,7 +27,12 @@ const General_State: Interface_General_State = {
     isAuthenticated: false,
     userId: "",
     username: "",
+    firstname   :"",
+    lastname:"",
+    titleValue:"",
+    prefix:"",
     userCategory: "",
+
 
     projects: [],
     currentProjecToEdit: null,
@@ -58,12 +67,21 @@ const General_Slice = createSlice({
 
             //getUser
             .addCase(getUser.fulfilled, (state, action) => {
+                console.log(action.payload ,"as")
                 state.username = action.payload.username
                 state.userCategory = action.payload.title
                 state.userId = action.payload.id
-                localStorage.setItem('userId', action.payload.id.toString());
-                localStorage.setItem('title', action.payload.title.toString());
-                localStorage.setItem('username', action.payload.username.toString());
+                state.firstname = action.payload.firstname
+                state.lastname = action.payload.lastname
+                state.titleValue = action.payload.titleValue
+                state.prefix = action.payload.prefix
+                localStorage.setItem('userId', action.payload.id);
+                localStorage.setItem('title', action.payload.title);
+                localStorage.setItem('firstname', action.payload.firstname);
+                localStorage.setItem('lastname', action.payload.lastname);
+                localStorage.setItem('titleValue', action.payload.titleValue);
+                localStorage.setItem('prefix', action.payload.prefix);
+
             })
 
             //getIndivClassement
