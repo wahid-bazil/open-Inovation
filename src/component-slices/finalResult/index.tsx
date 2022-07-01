@@ -19,8 +19,8 @@ const FinalResult = () => {
     //const
     const title = localStorage.getItem("title")
 
-
-
+    const isGetFinalResultPending = useSelector((state:Istate)=>state.general_Slice.getFinalResultPending)
+    const isGetUserAccountPending = useSelector((state:Istate)=>state.general_Slice.getUserAccountPending)
 
     //effects
     useEffect(() => {
@@ -31,6 +31,15 @@ const FinalResult = () => {
     }, [])
     return (
         <div className="FinalResult">
+            <Dialog
+                open={isGetFinalResultPending || isGetUserAccountPending}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogContent>
+                    <CircularProgress style={{color: "#CF113F"}}/>
+                </DialogContent>
+            </Dialog>
             <Layout>
                 <div className="top-side">
                     <ProjectClassement/>
