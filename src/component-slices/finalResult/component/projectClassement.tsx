@@ -28,19 +28,6 @@ const ProjectClassement = () => {
 
     return (
         <div className="ProjectClassement">
-            <FormControl>
-                <FormLabel id="demo-row-radio-buttons-group-label" style={{color: "#CF113F"}}>Jury group</FormLabel>
-                <RadioGroup
-                    onChange={handleChange}
-                    row
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                    value={groupe}
-                >
-                    <FormControlLabel value="g1" control={<Radio style={{color: "#CF113F"}} />} label="Jury 1" />
-                    <FormControlLabel value="g2" control={<Radio style={{color: "#CF113F"}} />} label="Jury 2" />
-                </RadioGroup>
-            </FormControl>
             <div>
                 <SliceTitle title={"TEAM RANKING"}/>
                 <div className="table">
