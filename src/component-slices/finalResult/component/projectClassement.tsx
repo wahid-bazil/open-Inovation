@@ -9,17 +9,6 @@ const ProjectClassement = () => {
     const dispatch = useAppDispatch()
 
     const finalClassemet = useSelector((state: Istate) => state.general_Slice.finalClassemet)
-    const currentGroup = useSelector((state: Istate) => state.general_Slice.currentGroup)
-
-    const [groupe,setGroup]=useState("g1")
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setGroup((event.target as HTMLInputElement).value);
-    };
-
-    //effects
-    useEffect(() => {
-        dispatch(getFinalResult(groupe))
-    }, [groupe])
 
     return (
         <div className="ProjectClassement">

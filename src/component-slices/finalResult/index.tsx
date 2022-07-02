@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import CircularProgress from "@mui/material/CircularProgress";
-import {getFinalResult} from "../../store/asyncThunks";
+import {getFinalResult, getUserAccount} from "../../store/asyncThunks";
 import JuryClassement from "./component/juryClassement";
 import ProjectClassement from "./component/projectClassement";
 import Layout from "../generalComponent/layout";
@@ -43,6 +43,7 @@ const FinalResult = () => {
             navigate("/")
         }
         dispatch(getFinalResult(groupe))
+        dispatch(getUserAccount(groupe))
     }, [groupe])
 
     return (
