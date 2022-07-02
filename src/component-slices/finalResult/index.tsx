@@ -11,6 +11,12 @@ import JuryClassement from "./component/juryClassement";
 import ProjectClassement from "./component/projectClassement";
 import Layout from "../generalComponent/layout";
 
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+
 const FinalResult = () => {
     const list = [1, 2, 3, 4, 5, 6]
     const navigate = useNavigate();
