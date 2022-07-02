@@ -20,7 +20,7 @@ const JuryTable = () => {
     };
  
     useEffect(() => {
-        dispatch(getUserAccount())
+        dispatch(getUserAccount(groupe))
     }, [groupe])
 
     return (
