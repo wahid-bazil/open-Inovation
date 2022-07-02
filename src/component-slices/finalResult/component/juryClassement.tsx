@@ -1,8 +1,7 @@
 import SliceTitle from "../../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {Istate, useAppDispatch} from "../../../store";
-import {getFinalResult, getUserAccount} from "../../../store/asyncThunks";
 import {Checkbox} from "@mui/material";
 
 const JuryTable = () => {
@@ -11,17 +10,6 @@ const JuryTable = () => {
     const dispatch = useAppDispatch()
 
     const userAccount = useSelector((state: Istate) => state.general_Slice.userAccount)
-     
-    const currentGroup = useSelector((state: Istate) => state.general_Slice.currentGroup)
-
-    const [groupe,setGroup]=useState("g1")
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setGroup((event.target as HTMLInputElement).value);
-    };
- 
-    useEffect(() => {
-        dispatch(getUserAccount(groupe))
-    }, [groupe])
 
     return (
         <div className="juryClassement">

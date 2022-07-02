@@ -1,8 +1,6 @@
 import SliceTitle from "../../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 import {Istate, useAppDispatch} from "../../../store";
-import {getFinalResult} from "../../../store/asyncThunks";
 
 const ProjectClassement = () => {
 
