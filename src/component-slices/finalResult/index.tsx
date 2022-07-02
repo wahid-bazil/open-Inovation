@@ -1,5 +1,5 @@
 import SliceTitle from "../generalComponent/sliceTitle";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Istate, useAppDispatch} from "../../store";
 import {useNavigate} from "react-router-dom";
@@ -21,6 +21,14 @@ const FinalResult = () => {
 
     const isGetFinalResultPending = useSelector((state:Istate)=>state.general_Slice.getFinalResultPending)
     const isGetUserAccountPending = useSelector((state:Istate)=>state.general_Slice.getUserAccountPending)
+    
+    const currentGroup = useSelector((state: Istate) => state.general_Slice.currentGroup)
+
+    const [groupe,setGroup]=useState("g1")
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setGroup((event.target as HTMLInputElement).value);
+    };
+
 
     //effects
     useEffect(() => {
@@ -28,7 +36,9 @@ const FinalResult = () => {
             localStorage.clear();
             navigate("/")
         }
-    }, [])
+        dispatch(getFinalResult(groupe))
+    }, [groupe])
+
     return (
         <div className="FinalResult">
             <Dialog
@@ -41,6 +51,20 @@ const FinalResult = () => {
                 </DialogContent>
             </Dialog>
             <Layout>
+                 <FormControl>
+                <FormLabel id="demo-row-radio-buttons-group-label" style={{color: "#CF113F"}}>Jury group</FormLabel>
+                <RadioGroup
+                    onChange={handleChange}
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                    value={groupe}
+                >
+                    <FormControlLabel value="g1" control={<Radio style={{color: "#CF113F"}} />} label="Jury 1" />
+                    <FormControlLabel value="g2" control={<Radio style={{color: "#CF113F"}} />} label="Jury 2" />
+                </RadioGroup>
+            </FormControl>
+
                 <div className="top-side">
                     <ProjectClassement/>
                 </div>
