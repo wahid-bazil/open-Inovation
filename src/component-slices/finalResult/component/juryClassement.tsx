@@ -1,5 +1,6 @@
 import SliceTitle from "../../generalComponent/sliceTitle";
 import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 import {Istate, useAppDispatch} from "../../../store";
 import React, {useEffect} from "react";
 import {getFinalResult, getUserAccount} from "../../../store/asyncThunks";
