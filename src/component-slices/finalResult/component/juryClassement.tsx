@@ -11,10 +11,17 @@ const JuryTable = () => {
     const dispatch = useAppDispatch()
 
     const userAccount = useSelector((state: Istate) => state.general_Slice.userAccount)
+     
+    const currentGroup = useSelector((state: Istate) => state.general_Slice.currentGroup)
 
+    const [groupe,setGroup]=useState("g1")
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setGroup((event.target as HTMLInputElement).value);
+    };
+ 
     useEffect(() => {
         dispatch(getUserAccount())
-    }, [])
+    }, [groupe])
 
     return (
         <div className="juryClassement">
