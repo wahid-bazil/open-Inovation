@@ -44,9 +44,9 @@ const FinalResult = () => {
                 <div className="top-side">
                     <ProjectClassement/>
                 </div>
-                <div className="bottom-side">
+                <!--div className="bottom-side">
                     <JuryClassement/>
-                </div>
+                </div>-->
             </Layout>
         </div>
     )
